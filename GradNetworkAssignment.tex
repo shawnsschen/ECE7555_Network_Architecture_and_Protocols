@@ -428,7 +428,7 @@ rtt min/avg/max/mdev = 20.264/20.488/21.100/0.346 ms
 \end{lstlisting}
 ~\\[18pt]
 (b). The equivalence for ``traceroute www.acm.org'' under Windows is ``traceroute -I www.acm.org'' under Linux.
-The last three routers are listed:
+There are 15 routers on the route to ``www.acm.org''. The last three routers are listed:
 \begin{lstlisting}
  11   167.206.183.162  17.577ms  17.714ms  17.841ms 
  12   167.206.183.74  18.121ms  18.561ms  18.924ms 
@@ -466,29 +466,29 @@ rtt min/avg/max/mdev = 13.489/13.532/13.598/0.152 ms
 \end{lstlisting}
 traceroute and ping report different RTT values for the 2 hops. A possible explanation is that ping a router and traceroute via a router are actually taking different paths.
 ~\\[18pt]
-(c). traceroute to www.scott.aq shows:
+(c). traceroute to www.aari.aq shows:
 \begin{lstlisting}
-traceroute to cluster1.e2digital.co.nz (202.174.118.89), 64 hops max
-traceroute to cluster1.e2digital.co.nz (202.174.118.89), 64 hops max
-  1   128.143.69.1  0.313ms  0.317ms  0.295ms 
-  2   128.143.236.133  0.478ms  0.471ms  0.456ms 
-  3   128.143.222.95  0.576ms  0.631ms  0.603ms 
-  4   128.143.222.91  0.576ms  0.619ms  0.588ms 
-  5   4.26.64.153  12.590ms  12.450ms  12.468ms 
-  6   4.69.144.79  74.421ms  74.386ms  109.873ms 
-  7   4.53.230.14  74.517ms  74.428ms  74.401ms 
-  8   *  *  * 
-  9   *  *  * 
- 10   *  *  * 
- 11   *  *  * 
- 12   111.69.27.32  234.477ms  234.312ms  234.368ms 
- 13   111.69.19.68  244.535ms  244.555ms  245.064ms 
- 14   111.69.19.69  249.180ms  249.141ms  249.085ms 
- 15   202.174.119.1  247.350ms  247.300ms  247.171ms 
+traceroute to www.aari.aq (193.227.232.34), 64 hops max
+  1   128.143.69.1  0.434ms  0.457ms  0.387ms 
+  2   128.143.236.133  0.548ms  0.413ms  0.368ms 
+  3   128.143.222.95  0.519ms  0.546ms  0.535ms 
+  4   192.35.48.34  3.188ms  3.171ms  2.999ms 
+  5   192.122.175.15  3.705ms  3.551ms  3.632ms 
+  6   198.71.45.0  9.350ms  9.520ms  9.215ms 
+  7   109.105.98.9  9.478ms  9.590ms  9.653ms 
+  8   109.105.97.143  14.943ms  15.189ms  15.342ms 
+  9   109.105.97.140  91.366ms  91.501ms  91.147ms 
+ 10   109.105.97.126  109.629ms  115.376ms  105.170ms 
+ 11   109.105.97.9  118.463ms  117.865ms  117.810ms 
+ 12   109.105.102.46  117.711ms  117.757ms  118.141ms 
+ 13   10.32.67.209  130.768ms  129.601ms  129.687ms 
+ 14   194.85.40.149  130.152ms  129.897ms  130.105ms 
+ 15   194.190.255.202  140.244ms  140.768ms  140.675ms 
  16   *  *  * 
- 17   202.174.118.89  245.420ms  245.282ms  245.338ms
+ 17   193.227.232.3  139.564ms  139.559ms  148.437ms 
+ 18   193.227.232.34  141.641ms  140.590ms  141.335ms
  \end{lstlisting}
  ~\\
- The largest delay happens between hop 7 and hop 12. We are seeing this delay because the path goes from Los Angeles to New Zealand.
+ The largest delay happens between hop 8 and hop 9. The router of hop 8 and hop 9 are both located in Stockholm, Sweden. So propagation delay cannot be so high. And transmission delay should not be so high neither because that implies a very slow link in between. It does not make sense for a national ISP to have a slow link in its core network. Processing delay can often be ignored. So the reason should be queueing delay. There is high traffic intensity on this link, which leads to high queueing delay.
 
 \end{document}

@@ -464,7 +464,7 @@ PING 167.206.183.74 (167.206.183.74) 56(84) bytes of data.
 5 packets transmitted, 5 received, 0% packet loss, time 4006ms
 rtt min/avg/max/mdev = 13.489/13.532/13.598/0.152 ms
 \end{lstlisting}
-traceroute and ping report different RTT values for the 2 hops. A possible explanation is that ping a router and traceroute via a router are actually taking different paths.
+traceroute and ping report different RTT values for the 2 hops. Doing another traceroute to hop 13 shows that ping takes a different path, which is not following the hops showed in the route trace to ``www.acm.org''.
 ~\\[18pt]
 (c). traceroute to www.aari.aq shows:
 \begin{lstlisting}

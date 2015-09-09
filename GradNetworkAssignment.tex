@@ -18,7 +18,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[titlepage, paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
@@ -61,7 +61,7 @@
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Shawn (Shuoshuo) Chen} % Your name
+\author{Shawn (Shuoshuo) Chen\\sc7cq@virginia.edu} % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -82,12 +82,12 @@ on the receiving side. This is a pipelining case. In addition, equation 1.1 from
 Then, at time $N \times \frac{L}{R}$, the first packet has arrived at the destination while the second one is one hop away from the destination and the third one is two hops away, etc. After $\frac{L}{R}$, 
 the second packet arrives at the destination and all other packets move one hop forward.
 Till $(P-1) \times \frac{L}{R}$ time later, the last packet arrives at the destination. Then the total delay for P packets is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{end-to-end} &= (P-1) \times \frac{L}{R} + N \times \frac{L}{R} \\
 &= (P+N-1) \times \frac{L}{R}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -100,23 +100,23 @@ According to the caravan analogy, cars travel at 100km/hr and each tollbooth tak
 In (a), the distance between the first tollbooth and the third tollbooth is 150km. And we know that delays are
 additive, so we can add the propagation delay and transmission delay of each segment. That is the service time of
 tollbooth 1, 2 and 3 and propagation delay of 150km:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{total} &= 3 \times d_{trans} + d_{prop} \\
 &= 3 \times 2 + \frac{150}{100} \times 60 \\
 &= 96 \quad minutes
 \end{split}					
-\end{align}
+\end{align*}
 \\
 Now if there are only 8 cars instead of 10, the service time (transmission delay) effectively becomes 1.6 minutes.
 So the total delay is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{total} &= 3 \times d_{trans} + d_{prop} \\
 &= 3 \times 1.6 + \frac{150}{100} \times 60 \\
 &= 94.8 \quad minutes
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -126,21 +126,21 @@ d_{total} &= 3 \times d_{trans} + d_{prop} \\
 
 \section*{Problem 7}
 Host A can only send an entire packet, so it needs to wait until at least one packet is constructed. This would take:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{encode} &= \frac{56 \times 8}{64} \\
 &= 7 \quad ms
 \end{split}					
-\end{align}
+\end{align*}
 \\
 And Host B starts decoding only after it receives an entire packet. This delay is transmission delay plus propagation delay. So total delay is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{total} &= d_{trans} + d_{prop} + d_{encode} \\
 &= \frac{56 \times 8}{2000} + 10 + 7 \\
 &= 17.224 \quad ms
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -150,23 +150,23 @@ d_{total} &= d_{trans} + d_{prop} + d_{encode} \\
 
 \section*{Problem 10}
 The total is consisted of $d_{proc}$, $d_{trans}$ and $d_{prop}$ (since there is no $d_{queue}$). Sum them up:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{end-to-end} &= 2 \times d_{proc} + \frac{L}{R_1} + \frac{L}{R_2} + \frac{L}{R_3} \\
 &+ \frac{d_1}{s_1} + \frac{d_2}{s_2} + \frac{d_3}{s_3}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 Now as the problem states, $L = 1500$ bytes, $s_1 = s_2 = s_3 = 2.5 \times 10^8$ m/s,
 $R_1 = R_2 = R_3 = 2$ Mbps, $d_{proc} = 3$ ms, $d_1 = 5000$ km, $d_2 = 4000$ km, $d_3 = 1000$ km.
 The total delay can be derived:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{total} &= 2 \times 3 + 3 \times \frac{1500 \times 8}{2000} \\
 &+ \frac{5000}{250} + \frac{4000}{250} + \frac{1000}{250}\\
 &= 64 \quad ms
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -277,25 +277,25 @@ By comparing these 2 results, we see that only the first 2 links leaving Princet
 
 \section*{Problem 21}
 The bandwidth of a path is limited by the bottleneck link rate on this path. For path k, the maximum throughput it can get is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 \tau_k = min\{ R^k_1, R^k_2, R^k_3, ..., R^k_N \}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 If the sender can only take one path, the maximum throughput it can get is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 \tau_{max} = max\{ \tau_1, \tau_2, \tau_3, ..., \tau_M \}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 If the sender can use all M paths, then the maximum throughput can reach:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 \tau_{max} = \tau_1 + \tau_2 + \tau_3 + ... + \tau_M \
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -305,19 +305,19 @@ If the sender can use all M paths, then the maximum throughput can reach:
 
 \section*{Problem 22}
 The probability of successful delivery is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 p_{successful} = (1-p)^N
 \end{split}					
-\end{align}
+\end{align*}
 \\
 The number of times a packet gets successfully transmitted follows the geometric distribution, where the mean value $m$ of the failed attempts is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 m &= \frac{1-p_{successful}}{p_{successful}} \\
 &= \frac{1-(1-p)^N}{(1-p)^N}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -327,32 +327,32 @@ m &= \frac{1-p_{successful}}{p_{successful}} \\
 
 \section*{Problem 23}
 At time $\frac{L}{R_s} + d_{prop}$, the last bit of the first packet has arrived the router. And the first bit of the second packet has just arrived the router. The first packet then takes $\frac{L}{R_c} + d_{prop}$ to arrive the destination. So the time when the last bit of the first packet arrives at the destination is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 t_1 = \frac{L}{R_s} + d_{prop} + \frac{L}{R_c} + d_{prop}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 Back to time $\frac{L}{R_s} + d_{prop}$, the second packet then takes $\frac{L}{R_s}$ to fully arrive at the router. And another $\frac{L}{R_c} + d_{prop}$ to reach the destination. So in total, the time when the last bit of the second packet arrives at the destination is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 t_2 = \frac{L}{R_s} + d_{prop} + \frac{L}{R_s} + \frac{L}{R_c} + d_{prop}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 The inter-arrival time is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 t_2 - t_1 = \frac{L}{R_s}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 Now if we assume the second link is the bottleneck, the second packet will be queued at the input queue of the second link. Because when the first packet completely arrives at the router, it takes $\frac{L}{R_c}$ to transmit it to the second link. However, the second packet will completely arrive after $\frac{L}{R_s}$, which is less than $\frac{L}{R_c}$. To ensure no queuing, the gap T needs to be at least:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 T = \frac{L}{R_c} - \frac{L}{R_s}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 
@@ -363,13 +363,13 @@ T = \frac{L}{R_c} - \frac{L}{R_s}
 \section*{Problem 24}
 I prefer to use FedEx over night delivery.
 The time it takes to transfer the data over 100 Mbps link is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 t &= \frac{40*1024*1024*8}{100} \\
 &= 3355443.2 \quad seconds \\
 &= 38.8 \quad days
 \end{split}					
-\end{align}
+\end{align*}
 \\
 It would take more than a month to transfer the data. Thus, FedEx is a better choice.
 \\
@@ -381,28 +381,28 @@ It would take more than a month to transfer the data. Thus, FedEx is a better ch
 
 \section*{Problem 33}
 According to problem 2, the end-to-end delay of P packets over N links is:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 d_{end-to-end} &= (P+N-1) \times \frac{L}{R} \\
 &= (\frac{F}{S} + 3 -1) \times \frac{80 + S}{R} \\
 &= (\frac{F}{S} + 2) \times \frac{80 + S}{R} \\
 &= \frac{2}{R} \times S + \frac{80 \times F}{R} \times \frac{1}{S} + \frac{F + 160}{R}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 To find the $S$ when $d_{end-to-end}$ is the minimum, we need to differentiate above equation with respect to $S$:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 \frac{dd_{end-to-end}}{dS} &= \frac{2}{R} - \frac{80 \times F}{R} \times \frac{1}{S^2} \\
 &= 0
 \end{split}					
-\end{align}
+\end{align*}
 Solve this equation and we will get:
-\begin{align} 
+\begin{align*} 
 \begin{split}
 S = \sqrt{40 \times F}
 \end{split}					
-\end{align}
+\end{align*}
 \\
 
 

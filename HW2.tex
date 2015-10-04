@@ -73,21 +73,13 @@
 %	PROBLEM 1
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 2}
+\section*{Problem 1}
 
-If assuming the sender is sending packets one after one without any gap, the packets will also arrive one after one
-on the receiving side. This is a pipelining case. In addition, equation 1.1 from the textbook ignores the propagation delay on the wire.
-\\
-
-Then, at time $N \times \frac{L}{R}$, the first packet has arrived at the destination while the second one is one hop away from the destination and the third one is two hops away, etc. After $\frac{L}{R}$, 
-the second packet arrives at the destination and all other packets move one hop forward.
-Till $(P-1) \times \frac{L}{R}$ time later, the last packet arrives at the destination. Then the total delay for P packets is:
-\begin{align*} 
-\begin{split}
-d_{end-to-end} &= (P-1) \times \frac{L}{R} + N \times \frac{L}{R} \\
-&= (P+N-1) \times \frac{L}{R}
-\end{split}					
-\end{align*}
+a. False \\
+b. True \\
+c. False \\
+d. False \\
+e. False \\
 \\
 
 
@@ -95,7 +87,7 @@ d_{end-to-end} &= (P-1) \times \frac{L}{R} + N \times \frac{L}{R} \\
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 5}
+\section*{Problem 3}
 According to the caravan analogy, cars travel at 100km/hr and each tollbooth takes 2 minutes to serve all cars.
 In (a), the distance between the first tollbooth and the third tollbooth is 150km. And we know that delays are
 additive, so we can add the propagation delay and transmission delay of each segment. That is the service time of

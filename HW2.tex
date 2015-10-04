@@ -98,23 +98,12 @@ protocol TCP.
 %	PROBLEM 3
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 7}
-Host A can only send an entire packet, so it needs to wait until at least one packet is constructed. This would take:
-\begin{align*} 
-\begin{split}
-d_{encode} &= \frac{56 \times 8}{64} \\
-&= 7 \quad ms
-\end{split}					
-\end{align*}
-\\
-And Host B starts decoding only after it receives an entire packet. This delay is transmission delay plus propagation delay. So total delay is:
-\begin{align*} 
-\begin{split}
-d_{total} &= d_{trans} + d_{prop} + d_{encode} \\
-&= \frac{56 \times 8}{2000} + 10 + 7 \\
-&= 17.224 \quad ms
-\end{split}					
-\end{align*}
+\section*{Problem 4}
+a. http://gaia.cs.umass.edu/cs453/index.html  (URL=protocol+host+filenpath) \\
+b. HTTP 1.1 \\
+c. persistent (indicated by filed Connection: keep-alive) \\
+d. not able to tell by just looking at the HTTP message. But if we have the captured packet, we can check the src IP field in the IP header. \\
+e. Mozilla/5.0, the server can send different versions of the page to the client according to the browser information. \\
 \\
 
 
@@ -122,7 +111,7 @@ d_{total} &= d_{trans} + d_{prop} + d_{encode} \\
 %	PROBLEM 4
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 10}
+\section*{Problem 6}
 The total is consisted of $d_{proc}$, $d_{trans}$ and $d_{prop}$ (since there is no $d_{queue}$). Sum them up:
 \begin{align*} 
 \begin{split}

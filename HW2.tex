@@ -88,27 +88,9 @@ e. False \\
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 3}
-According to the caravan analogy, cars travel at 100km/hr and each tollbooth takes 2 minutes to serve all cars.
-In (a), the distance between the first tollbooth and the third tollbooth is 150km. And we know that delays are
-additive, so we can add the propagation delay and transmission delay of each segment. That is the service time of
-tollbooth 1, 2 and 3 and propagation delay of 150km:
-\begin{align*} 
-\begin{split}
-d_{total} &= 3 \times d_{trans} + d_{prop} \\
-&= 3 \times 2 + \frac{150}{100} \times 60 \\
-&= 96 \quad minutes
-\end{split}					
-\end{align*}
-\\
-Now if there are only 8 cars instead of 10, the service time (transmission delay) effectively becomes 1.6 minutes.
-So the total delay is:
-\begin{align*} 
-\begin{split}
-d_{total} &= 3 \times d_{trans} + d_{prop} \\
-&= 3 \times 1.6 + \frac{150}{100} \times 60 \\
-&= 94.8 \quad minutes
-\end{split}					
-\end{align*}
+Before running HTTP, application-layer protocol DNS is needed to resolve the hostname to IP address.
+And DNS is running on top of transport-layer protocol UDP. HTTP is running on top of transport-layer
+protocol TCP.
 \\
 
 

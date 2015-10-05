@@ -257,34 +257,9 @@ T_{total} &= 0.4 \times T_{total1} + 0.6 \times T_{total2} \\
 %	PROBLEM 8
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 23}
-At time $\frac{L}{R_s} + d_{prop}$, the last bit of the first packet has arrived the router. And the first bit of the second packet has just arrived the router. The first packet then takes $\frac{L}{R_c} + d_{prop}$ to arrive the destination. So the time when the last bit of the first packet arrives at the destination is:
-\begin{align*} 
-\begin{split}
-t_1 = \frac{L}{R_s} + d_{prop} + \frac{L}{R_c} + d_{prop}
-\end{split}					
-\end{align*}
-\\
-Back to time $\frac{L}{R_s} + d_{prop}$, the second packet then takes $\frac{L}{R_s}$ to fully arrive at the router. And another $\frac{L}{R_c} + d_{prop}$ to reach the destination. So in total, the time when the last bit of the second packet arrives at the destination is:
-\begin{align*} 
-\begin{split}
-t_2 = \frac{L}{R_s} + d_{prop} + \frac{L}{R_s} + \frac{L}{R_c} + d_{prop}
-\end{split}					
-\end{align*}
-\\
-The inter-arrival time is:
-\begin{align*} 
-\begin{split}
-t_2 - t_1 = \frac{L}{R_s}
-\end{split}					
-\end{align*}
-\\
-Now if we assume the second link is the bottleneck, the second packet will be queued at the input queue of the second link. Because when the first packet completely arrives at the router, it takes $\frac{L}{R_c}$ to transmit it to the second link. However, the second packet will completely arrive after $\frac{L}{R_s}$, which is less than $\frac{L}{R_c}$. To ensure no queuing, the gap T needs to be at least:
-\begin{align*} 
-\begin{split}
-T = \frac{L}{R_c} - \frac{L}{R_s}
-\end{split}					
-\end{align*}
+\section*{Problem 13}
+MAIL FROM in SMTP is used for the SMTP server to know whom the sender is. It needs to be a valid
+email address recognizable by the SMTP server. The From filed is just a human-readable text in the message body.
 \\
 
 

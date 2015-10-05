@@ -319,30 +319,29 @@ For P2P model:
 %	PROBLEM 10
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 33}
-According to problem 2, the end-to-end delay of P packets over N links is:
+\section*{Problem 23}
+(a). The server sends the file to each receiver in parallel with the same rate of $\frac{u_s}{N}$.
+Since $\frac{u_s}{N} \leqslant d_{min}$, each receiver can receive at the speed of $\frac{u_s}{N}$.
+Thus, the distribution time is the reception time of each receiver:
 \begin{align*} 
 \begin{split}
-d_{end-to-end} &= (P+N-1) \times \frac{L}{R} \\
-&= (\frac{F}{S} + 3 -1) \times \frac{80 + S}{R} \\
-&= (\frac{F}{S} + 2) \times \frac{80 + S}{R} \\
-&= \frac{2}{R} \times S + \frac{80 \times F}{R} \times \frac{1}{S} + \frac{F + 160}{R}
+D_{cs} &= \frac{F}{\frac{u_s}{N}} \\
+&= \frac{NF}{u_s}
 \end{split}					
 \end{align*}
-\\
-To find the $S$ when $d_{end-to-end}$ is the minimum, we need to differentiate above equation with respect to $S$:
+
+(b). The server sends the file to each receiver in parallel with the same rate of $d_{min}$.
+Because $\frac{u_s}{N} \geqslant d_{min}$, each receiver can only receive at full speed, which is $d_{min}$.
+And since all receivers are receiving in parallel, the total time equals the single reception time:
 \begin{align*} 
 \begin{split}
-\frac{dd_{end-to-end}}{dS} &= \frac{2}{R} - \frac{80 \times F}{R} \times \frac{1}{S^2} \\
-&= 0
+D_{cs} &= \frac{F}{d_{min}}
 \end{split}					
 \end{align*}
-Solve this equation and we will get:
-\begin{align*} 
-\begin{split}
-S = \sqrt{40 \times F}
-\end{split}					
-\end{align*}
+
+(c). For $\frac{u_s}{N} \leqslant d_{min}$, there is $D_{cs} \geqslant \frac{NF}{u_s}$.
+And for $\frac{u_s}{N} \geqslant d_{min}$, there is $D_{cs} \geqslant \frac{F}{d_{min}}$.
+Thus, given any $u_s$, there is $D_{cs} \geqslant max\{ \frac{NF}{u_s}, \frac{F}{d_{min}} \}$.
 \\
 
 

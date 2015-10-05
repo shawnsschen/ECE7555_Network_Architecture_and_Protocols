@@ -112,24 +112,15 @@ e. Mozilla/5.0, the server can send different versions of the page to the client
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 6}
-The total is consisted of $d_{proc}$, $d_{trans}$ and $d_{prop}$ (since there is no $d_{queue}$). Sum them up:
-\begin{align*} 
-\begin{split}
-d_{end-to-end} &= 2 \times d_{proc} + \frac{L}{R_1} + \frac{L}{R_2} + \frac{L}{R_3} \\
-&+ \frac{d_1}{s_1} + \frac{d_2}{s_2} + \frac{d_3}{s_3}
-\end{split}					
-\end{align*}
-\\
-Now as the problem states, $L = 1500$ bytes, $s_1 = s_2 = s_3 = 2.5 \times 10^8$ m/s,
-$R_1 = R_2 = R_3 = 2$ Mbps, $d_{proc} = 3$ ms, $d_1 = 5000$ km, $d_2 = 4000$ km, $d_3 = 1000$ km.
-The total delay can be derived:
-\begin{align*} 
-\begin{split}
-d_{total} &= 2 \times 3 + 3 \times \frac{1500 \times 8}{2000} \\
-&+ \frac{5000}{250} + \frac{4000}{250} + \frac{1000}{250}\\
-&= 64 \quad ms
-\end{split}					
-\end{align*}
+a. Both the server and client can signal the close of a persistent connection. Both the server and client
+would check the Connection header field to see if the connection-token "close" is included. Once the
+connection-token "close" is received, no further message should be sent on that connection. \\
+b. no encryption service is provided. \\
+c. The RFC suggests a single client should not maintain more than 2 connections to a server. But actually,
+it really depends on the implementation of the browser vendors. \\
+d. Yes, it's possible. In a typical case described by the RFC, a client might have started to send a new request
+at the same time that the server has decided to close the "idle" connection. From the server's point of view,
+the connection is being closed while it was idle, but from the client's point of view, a request is in progress.\\
 \\
 
 

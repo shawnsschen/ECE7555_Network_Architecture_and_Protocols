@@ -360,85 +360,15 @@ When peer 3 asks peer 4, it returns the information of peer 8. Peer 3 then takes
 %	PROBLEM 12
 %----------------------------------------------------------------------------------------
 
-\section*{Networking utilities}
-(a). The equivalence for ``ping -n -l'' under Windows is ``ping -c -s'' under Linux.
-The result shows:
-\begin{lstlisting}
-shawn@new-rivanna ~ $ ping -c 5 -s 45 www.acm.org
-PING www.acm.org (64.238.147.76) 45(73) bytes of data.
-53 bytes from ACMWEB16.acm.org (64.238.147.76): icmp_seq=1 ttl=48 time=20.3 ms
-53 bytes from ACMWEB16.acm.org (64.238.147.76): icmp_seq=2 ttl=48 time=20.2 ms
-53 bytes from ACMWEB16.acm.org (64.238.147.76): icmp_seq=3 ttl=48 time=20.3 ms
-53 bytes from ACMWEB16.acm.org (64.238.147.76): icmp_seq=4 ttl=48 time=21.1 ms
-53 bytes from ACMWEB16.acm.org (64.238.147.76): icmp_seq=5 ttl=48 time=20.4 ms
+\section*{WebSocket vs HTTP}
+(a). Time-sensitive applications like online games and stock tickers tend to generate data at a high frequency.
+In this sense, HTTP long polling and streaming would not be very suitable because the server can only send data
+upon client's request. For exmaple, in terms of HTTP long polling and streaming, the stock tickers are generated at the scale of micro seconds while network delay is usually milliseconds. When the client receives a previous response and issues a new request right away, due to network delay, quite a lot of hitorical tickers would be missed since server only returns the latest status. However, WebSocket does not have this problem because upon the update of a tick, server can push it to the client. Even though the ticks are generated at high speed, server is doing pipelining to push the data. No data will be missed. \\
 
---- www.acm.org ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4004ms
-rtt min/avg/max/mdev = 20.264/20.488/21.100/0.346 ms
-\end{lstlisting}
-~\\[18pt]
-(b). The equivalence for ``traceroute www.acm.org'' under Windows is ``traceroute -I www.acm.org'' under Linux.
-There are 15 routers on the route to ``www.acm.org''. The last three routers are listed:
-\begin{lstlisting}
- 11   167.206.183.162  17.577ms  17.714ms  17.841ms 
- 12   167.206.183.74  18.121ms  18.561ms  18.924ms 
- 13   69.74.152.210  20.970ms  21.059ms  21.250ms 
- 14   *  *  * 
- 15   64.238.147.76  20.333ms  20.938ms  20.190ms
-\end{lstlisting}
-Since there are only 2 routers responding the ICMP echo request, I will only ping No.12 and No.13. \\
-Ping hop No.13 shows:
-\begin{lstlisting}
-PING 69.74.152.210 (69.74.152.210) 56(84) bytes of data.
-64 bytes from 69.74.152.210: icmp_seq=1 ttl=242 time=13.6 ms
-64 bytes from 69.74.152.210: icmp_seq=2 ttl=242 time=13.5 ms
-64 bytes from 69.74.152.210: icmp_seq=3 ttl=242 time=13.5 ms
-64 bytes from 69.74.152.210: icmp_seq=4 ttl=242 time=13.5 ms
-64 bytes from 69.74.152.210: icmp_seq=5 ttl=242 time=13.6 ms
+(b). WebSocket and HTTP are actually unrelated. The only relationship is that websocket's handshake is sent to port 80 and interpreted by a web server as upgrade request. The difference between them is that websocket is truly full-duplex, the server can push data to the client. While HTTP is not truly full-duplex though server push can be implemented by HTTP long polling or streaming. \\
 
---- 69.74.152.210 ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4006ms
-rtt min/avg/max/mdev = 13.576/13.603/13.674/0.082 ms
-\end{lstlisting}
-~\\
-Ping hop No.12 shows:
-\begin{lstlisting}
-PING 167.206.183.74 (167.206.183.74) 56(84) bytes of data.
-64 bytes from 167.206.183.74: icmp_seq=1 ttl=243 time=13.5 ms
-64 bytes from 167.206.183.74: icmp_seq=2 ttl=243 time=13.4 ms
-64 bytes from 167.206.183.74: icmp_seq=3 ttl=243 time=13.5 ms
-64 bytes from 167.206.183.74: icmp_seq=4 ttl=243 time=13.5 ms
-64 bytes from 167.206.183.74: icmp_seq=5 ttl=243 time=13.4 ms
+WebSocket runs on top of TCP. It establishes a single persistent TCP connection at the handshake phase.
+\\
 
---- 167.206.183.74 ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4006ms
-rtt min/avg/max/mdev = 13.489/13.532/13.598/0.152 ms
-\end{lstlisting}
-traceroute and ping report different RTT values for the 2 hops. Doing another traceroute to hop 13 shows that ping takes a different path, which is not following the hops showed in the route trace to ``www.acm.org''.
-~\\[18pt]
-(c). traceroute to www.aari.aq shows:
-\begin{lstlisting}
-traceroute to www.aari.aq (193.227.232.34), 64 hops max
-  1   128.143.69.1  0.434ms  0.457ms  0.387ms 
-  2   128.143.236.133  0.548ms  0.413ms  0.368ms 
-  3   128.143.222.95  0.519ms  0.546ms  0.535ms 
-  4   192.35.48.34  3.188ms  3.171ms  2.999ms 
-  5   192.122.175.15  3.705ms  3.551ms  3.632ms 
-  6   198.71.45.0  9.350ms  9.520ms  9.215ms 
-  7   109.105.98.9  9.478ms  9.590ms  9.653ms 
-  8   109.105.97.143  14.943ms  15.189ms  15.342ms 
-  9   109.105.97.140  91.366ms  91.501ms  91.147ms 
- 10   109.105.97.126  109.629ms  115.376ms  105.170ms 
- 11   109.105.97.9  118.463ms  117.865ms  117.810ms 
- 12   109.105.102.46  117.711ms  117.757ms  118.141ms 
- 13   10.32.67.209  130.768ms  129.601ms  129.687ms 
- 14   194.85.40.149  130.152ms  129.897ms  130.105ms 
- 15   194.190.255.202  140.244ms  140.768ms  140.675ms 
- 16   *  *  * 
- 17   193.227.232.3  139.564ms  139.559ms  148.437ms 
- 18   193.227.232.34  141.641ms  140.590ms  141.335ms
- \end{lstlisting}
- ~\\
- The largest delay happens between hop 8 and hop 9. The router of hop 8 and hop 9 are both located in Stockholm, Sweden. So propagation delay cannot be so high. And transmission delay should not be so high neither because that implies a very slow link in between. It does not make sense for a national ISP to have a slow link in its core network. Processing delay can often be ignored. So the reason should be queueing delay. There is high traffic intensity on this link, which leads to high queueing delay.
 
 \end{document}

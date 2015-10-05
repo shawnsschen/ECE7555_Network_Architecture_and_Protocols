@@ -28,6 +28,7 @@
 
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
+
 \usepackage{sectsty} % Allows customizing section commands
 \allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
 
@@ -267,18 +268,50 @@ email address recognizable by the SMTP server. The From filed is just a human-re
 %	PROBLEM 9
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 24}
-I prefer to use FedEx over night delivery.
-The time it takes to transfer the data over 100 Mbps link is:
+\section*{Problem 22}
+For client-server model, the minimum distribution time can be calculated by:
 \begin{align*} 
 \begin{split}
-t &= \frac{40*1024*1024*8}{100} \\
-&= 3355443.2 \quad seconds \\
-&= 38.8 \quad days
+D_{cs} &= max\{ \frac{NF}{u_s}, \frac{F}{d_{min}} \}
 \end{split}					
 \end{align*}
+For P2P model, the minimum distribution time can be calculated by:
+\begin{align*} 
+\begin{split}
+D_{P2P} &= max\{ \frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum \limits{i=1}^N u_i} \}
+\end{split}					
+\end{align*}
+For client-server model:
+\begin{table}[h!]
+  \begin{center}
+    \label{tab:table1}
+    \begin{tabular}{ l | l | c | r }
+      N/u & 300 Kbps & 700 Kbps & 2 Mbps \\
+      \hline
+      10 & 7500 sec & 7500 sec & 7500 sec \\
+      \hline
+      100 & 50000 sec & 50000 sec & 50000 sec \\
+      \hline
+      1000 & 500000 sec & 500000 sec & 500000 sec \\
+    \end{tabular}
+  \end{center}
+\end{table}
 \\
-It would take more than a month to transfer the data. Thus, FedEx is a better choice.
+For P2P model:
+\begin{table}[h!]
+  \begin{center}
+    \label{tab:table1}
+    \begin{tabular}{ l | l | c | r }
+      N/u & 300 Kbps & 700 Kbps & 2 Mbps \\
+      \hline
+      10 & 7500 sec & 7500 sec & 7500 sec \\
+      \hline
+      100 & 25000 sec & 15000 sec & 7500 sec \\
+      \hline
+      1000 & 45455 sec & 20548 sec & 7500 sec \\
+    \end{tabular}
+  \end{center}
+\end{table}
 \\
 
 

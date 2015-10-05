@@ -75,11 +75,11 @@
 
 \section*{Problem 1}
 
-a. False \\
-b. True \\
-c. False \\
-d. False \\
-e. False \\
+(a). False \\
+(b). True \\
+(c). False \\
+(d). False \\
+(e). False \\
 \\
 
 
@@ -99,11 +99,15 @@ protocol TCP.
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 4}
-a. http://gaia.cs.umass.edu/cs453/index.html  (URL=protocol+host+filenpath) \\
-b. HTTP 1.1 \\
-c. persistent (indicated by filed Connection: keep-alive) \\
-d. not able to tell by just looking at the HTTP message. But if we have the captured packet, we can check the src IP field in the IP header. \\
-e. Mozilla/5.0, the server can send different versions of the page to the client according to the browser information. \\
+(a). http://gaia.cs.umass.edu/cs453/index.html  (URL=protocol+host+filenpath) \\
+
+(b). HTTP 1.1 \\
+
+(c). persistent (indicated by filed Connection: keep-alive) \\
+
+(d). not able to tell by just looking at the HTTP message. But if we have the captured packet, we can check the src IP field in the IP header. \\
+
+(e). Mozilla/5.0, the server can send different versions of the page to the client according to the browser information. \\
 \\
 
 
@@ -112,13 +116,16 @@ e. Mozilla/5.0, the server can send different versions of the page to the client
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 6}
-a. Both the server and client can signal the close of a persistent connection. Both the server and client
+(a). Both the server and client can signal the close of a persistent connection. Both the server and client
 would check the Connection header field to see if the connection-token "close" is included. Once the
 connection-token "close" is received, no further message should be sent on that connection. \\
-b. no encryption service is provided. \\
-c. The RFC suggests a single client should not maintain more than 2 connections to a server. But actually,
+
+(b). no encryption service is provided. \\
+
+(c). The RFC suggests a single client should not maintain more than 2 connections to a server. But actually,
 it really depends on the implementation of the browser vendors. \\
-d. Yes, it's possible. In a typical case described by the RFC, a client might have started to send a new request
+
+(d). Yes, it's possible. In a typical case described by the RFC, a client might have started to send a new request
 at the same time that the server has decided to close the "idle" connection. From the server's point of view,
 the connection is being closed while it was idle, but from the client's point of view, a request is in progress.\\
 \\
@@ -149,25 +156,30 @@ T_{total} = \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0}
 %	PROBLEM 6
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 21}
-The bandwidth of a path is limited by the bottleneck link rate on this path. For path k, the maximum throughput it can get is:
+\section*{Problem 8}
+(a). For non-persistent and non-parallel connection, the delay of extra 8 objects is additive:
 \begin{align*} 
 \begin{split}
-\tau_k = min\{ R^k_1, R^k_2, R^k_3, ..., R^k_N \}
+T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + 8 \times 2 \times RTT_{0} \\
+&= \sum\limits_{i=1}^n RTT_{i} + 18 \times RTT_{0}
 \end{split}					
 \end{align*}
-\\
-If the sender can only take one path, the maximum throughput it can get is:
+
+(b). For non-persistent but up to 5 parallel connections, the 8 objects will be fetched in 2 batches,
+5 in the first request/reply and 3 in the second one. Total elapsed time is:
 \begin{align*} 
 \begin{split}
-\tau_{max} = max\{ \tau_1, \tau_2, \tau_3, ..., \tau_M \}
+T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + 2 \times 2 \times RTT_{0} \\
+&= \sum\limits_{i=1}^n RTT_{i} + 6 \times RTT_{0}
 \end{split}					
 \end{align*}
-\\
-If the sender can use all M paths, then the maximum throughput can reach:
+
+(c). For persistent connections, we can do pipelining. Thus the 8 objects only cost one RTT and additive
+transmission delay. However, transmission delay is ignored, so total elapsed time is:
 \begin{align*} 
 \begin{split}
-\tau_{max} = \tau_1 + \tau_2 + \tau_3 + ... + \tau_M \
+T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + RTT_{0} \\
+&= \sum\limits_{i=1}^n RTT_{i} + 3 \times RTT_{0}
 \end{split}					
 \end{align*}
 \\

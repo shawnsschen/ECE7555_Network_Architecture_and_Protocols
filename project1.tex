@@ -230,6 +230,44 @@ has not been modified. According to the note that the server updates the
 modified time of that object every minute, we can see that the second request
 was sent within one minute. Thus the server just returned 304 instead the object.
 
+\newpage
+
+
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/longobj.pdf}
+    \caption{HTTP Long Document}
+    \label{fig:longobj}
+\end{figure}
+
+The HTTP GET and response for US Bill of Rights are displayed in Figure ~\ref{fig:longobj}.
+\\
+
+\subsection*{Question 12}
+Just one. The packet number is 506.
+\\
+
+
+\subsection*{Question 13}
+Packet 511 contains the status code and phrase as showed:
+\begin{verbatim}
+No  Time        Source         Destination     Protocol Length
+511	5.539201000	128.119.245.12 128.143.137.117 HTTP     2962
+...
+HTTP/1.1 200 OK\r\n
+\end{verbatim}
+
+
+\subsection*{Question 14}
+The status code is 200 and phrase is OK same as showed in question 13.
+\\
+
+
+\subsection*{Question 15}
+Two segments were needed. First one came with a response of status code and
+a part of the text, which the TCP payload (HTTP content) is 2896 bytes.
+Second one came with the rest of the text, which the payload is 1967 bytes.
+This can be seen in Figure ~\ref{fig:longobj}.
+\\
 
 
 \end{document}

@@ -337,7 +337,42 @@ Note the request pattern is GET-GET-Response-Response, which means it is paralle
 The two GET messages were going out with a minor gap because the browser parses the base page in sequence.
 Once the browser finds a referenced object, it issues a request immediately. Since the logo is referenced in the base page prior to the cover page, there is difference in time. \\
 
-Also, even the cover page was not successfully retrieved in the first response, the concept still fits into the parallel model.
+Also, even the cover page was not successfully retrieved in the first response, the concept still fits into the parallel model. \\
+
+
+\newpage
+
+
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/authn1.pdf}
+    \caption{HTTP Authentication 1}
+    \label{fig:authn1}
+\end{figure}
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/authn2.pdf}
+    \caption{HTTP Authentication 2}
+    \label{fig:authn2}
+\end{figure}
+
+\newpage
+The HTTP authentication is displayed in Figure ~\ref{fig:authn1} and Figure ~\ref{fig:authn2}.
+\\
+
+\subsection*{Question 18}
+The server responded HTTP/1.1 401 Unauthorized to the initial HTTP GET.
+\begin{verbatim}
+HTTP/1.1 401 Unauthorized\r\n
+...
+WWW-Authenticate: Basic realm="wireshark-students only"\r\n
+\end{verbatim}
+
+
+\subsection*{Question 19}
+The Authorization filed was included for the second HTTP GET:
+\begin{verbatim}
+Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=\r\n
+    Credentials: wireshark-students:network
+\end{verbatim}
 
 
 \end{document}

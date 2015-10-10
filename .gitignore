@@ -1,4 +1,5 @@
-*
-!.gitignore
-!*.tex
-!images/
+.DS_Store
+*.aux
+*.log
+*.pdf
+*.synctex.gz

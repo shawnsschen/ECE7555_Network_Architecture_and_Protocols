@@ -267,7 +267,77 @@ Two segments were needed. First one came with a response of status code and
 a part of the text, which the TCP payload (HTTP content) is 2896 bytes.
 Second one came with the rest of the text, which the payload is 1967 bytes.
 This can be seen in Figure ~\ref{fig:longobj}.
+
+\newpage
+
+
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/refobj1.pdf}
+    \caption{HTTP Document with Embedded Objects 1}
+    \label{fig:refobj1}
+\end{figure}
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/refobj2.pdf}
+    \caption{HTTP Document with Embedded Objects 2}
+    \label{fig:refobj2}
+\end{figure}
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/refobj3.pdf}
+    \caption{HTTP Document with Embedded Objects 3}
+    \label{fig:refobj3}
+\end{figure}
+
+\newpage
+The HTTP document with embedded objects are displayed in Figure ~\ref{fig:refobj1}, Figure ~\ref{fig:refobj2} and Figure ~\ref{fig:refobj3}.
 \\
+
+\subsection*{Question 16}
+My browser sent 4 HTTP GET messages. \\
+The first GET was sent to 128.119.245.12
+(gaia.cs.umass.edu) to retrieve the base page:
+\begin{verbatim}
+No  Time        Source      Destination       Protocol  Length    Info
+54  17.057158   10.0.2.15	  128.119.245.12    HTTP      381       GET
+/wireshark-labs/HTTP-wireshark-file4.html HTTP/1.1
+\end{verbatim}
+The second GET was sent to 165.193.140.14 (www.pearsonhighered.com) to retrieve the logo:
+\begin{verbatim}
+No  Time        Source      Destination       Protocol  Length    Info
+70  17.163843   10.0.2.15   165.193.140.14	   HTTP      453       GET
+/assets/hip/us/hip_us_pearsonhighered/images/pearson_logo.gif HTTP/1.1 
+\end{verbatim}
+The third GET was sent to 128.119.240.90 (manic.cs.virginia.edu) to retrieve the cover page:
+\begin{verbatim}
+No  Time        Source      Destination       Protocol  Length    Info
+75  17.165440   10.0.2.15   128.119.240.90    HTTP      412       GET
+/~kurose/cover_5th_ed.jpg HTTP/1.1 
+\end{verbatim}
+The fourth GET was sent to 128.119.240.90 (caite.cs.umass.edu) because manic.cs.virginia.edu told the browser that the cover page is moved to another place:
+\begin{verbatim}
+No  Time        Source      Destination       Protocol  Length    Info
+98  17.240440   10.0.2.15   128.119.240.90    HTTP      412       GET
+/~kurose/cover_5th_ed.jpg HTTP/1.1 
+\end{verbatim}
+
+\subsection*{Question 17}
+The two images were downloaded in parallel. Wireshark shows there were two GET messages going out almost at the same time (one for logo and the other for cover page). Then two responses came in.
+\begin{verbatim}
+No  Time        Source      Destination       Protocol  Length    Info
+70  17.163843   10.0.2.15   165.193.140.14	   HTTP      453       GET
+/assets/hip/us/hip_us_pearsonhighered/images/pearson_logo.gif HTTP/1.1
+75  17.165440   10.0.2.15   128.119.240.90    HTTP      412       GET
+/~kurose/cover_5th_ed.jpg HTTP/1.1
+79  17.193947   128.119.240.90  10.0.2.15     HTTP      510       HTTP/1.1
+302 Found
+93  17.222257   165.193.140.14  10.0.2.15     HTTP      1010      HTTP/1.1
+200 OK  (GIF89a)
+\end{verbatim}
+Note the request pattern is GET-GET-Response-Response, which means it is parallel. A serial pattern should look like GET-Response-GET-Response. \\
+
+The two GET messages were going out with a minor gap because the browser parses the base page in sequence.
+Once the browser finds a referenced object, it issues a request immediately. Since the logo is referenced in the base page prior to the cover page, there is difference in time. \\
+
+Also, even the cover page was not successfully retrieved in the first response, the concept still fits into the parallel model.
 
 
 \end{document}

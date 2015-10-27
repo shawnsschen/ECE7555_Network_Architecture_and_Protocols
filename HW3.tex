@@ -90,13 +90,15 @@ flipped in checksum. In this case, the sum would still be straight 1's.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 2
+%	PROBLEM 6
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 3}
-Before running HTTP, application-layer protocol DNS is needed to resolve the hostname to IP address.
-And DNS is running on top of transport-layer protocol UDP. HTTP is running on top of transport-layer
-protocol TCP.
+\section*{Problem 6}
+If the sender sends a packet with sequence number 1, and receiver confirms with an ACK 1.
+But the ACK is corrupted when it reaches the sender. The sender then resends packet 1. However,
+according to the FSM, receiver has already been waiting for packet 0. As a consequence, it rejects
+the resent packet 1 with NAK back to the sender. The sender keeps sending packet 1 and the receiver
+keeps rejecting. Both sides go into a deadlock state.
 \\
 
 

@@ -27,6 +27,7 @@
 \usepackage{listings}
 
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{graphicx}
 
 
 \usepackage{sectsty} % Allows customizing section commands
@@ -43,7 +44,6 @@
 \setlength{\headheight}{13.6pt} % Customize the height of the header
 
 \numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
-\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 
 \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
@@ -103,20 +103,16 @@ keeps rejecting. Both sides go into a deadlock state.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 3
+%	PROBLEM 8
 %----------------------------------------------------------------------------------------
+\section*{Problem 8}
+Please see Figure \ref{fig:rdt3}.
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/rdt3-rcv-FSM.pdf}
+    \caption{Receiver FSM for rdt3.0}
+    \label{fig:rdt3}
+\end{figure}
 
-\section*{Problem 4}
-(a). http://gaia.cs.umass.edu/cs453/index.html  (URL=protocol+host+filenpath) \\
-
-(b). HTTP 1.1 \\
-
-(c). persistent (indicated by filed Connection: keep-alive) \\
-
-(d). not able to tell by just looking at the HTTP message. But if we have the captured packet, we can check the src IP field in the IP header. \\
-
-(e). Mozilla/5.0, the server can send different versions of the page to the client according to the browser information. \\
-\\
 
 
 %----------------------------------------------------------------------------------------

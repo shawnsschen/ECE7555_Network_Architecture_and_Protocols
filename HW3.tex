@@ -142,35 +142,18 @@ the packet is sent. Then if bit error occurs causing the ACK to be corrupted, an
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 6
+%	PROBLEM 13
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 8}
-(a). For non-persistent and non-parallel connection, the delay of extra 8 objects is additive:
-\begin{align*} 
-\begin{split}
-T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + 8 \times 2 \times RTT_{0} \\
-&= \sum\limits_{i=1}^n RTT_{i} + 18 \times RTT_{0}
-\end{split}					
-\end{align*}
-
-(b). For non-persistent but up to 5 parallel connections, the 8 objects will be fetched in 2 batches,
-5 in the first request/reply and 3 in the second one. Total elapsed time is:
-\begin{align*} 
-\begin{split}
-T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + 2 \times 2 \times RTT_{0} \\
-&= \sum\limits_{i=1}^n RTT_{i} + 6 \times RTT_{0}
-\end{split}					
-\end{align*}
-
-(c). For persistent connections, we can do pipelining. Thus the 8 objects only cost one RTT and additive
-transmission delay. However, transmission delay is ignored, so total elapsed time is:
-\begin{align*} 
-\begin{split}
-T_{total} &= \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0} + RTT_{0} \\
-&= \sum\limits_{i=1}^n RTT_{i} + 3 \times RTT_{0}
-\end{split}					
-\end{align*}
+\section*{Problem 13}
+As figure \ref{fig:p13} shows, the first D0 is reordered and appears right before the new D0.
+This would confuse the receiver since receiver might take the reordered D0, which it has already received,
+as the new D0 expected.
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/P13.pdf}
+    \caption{Out-of-sequence problem}
+    \label{fig:p13}
+\end{figure}
 \\
 
 

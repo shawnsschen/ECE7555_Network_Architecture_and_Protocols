@@ -116,22 +116,16 @@ Please see Figure \ref{fig:rdt3}.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 4
+%	PROBLEM 11
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 6}
-(a). Both the server and client can signal the close of a persistent connection. Both the server and client
-would check the Connection header field to see if the connection-token "close" is included. Once the
-connection-token "close" is received, no further message should be sent on that connection. \\
+\section*{Problem 11}
+If the receiver does not send back an ACK and the packet is corrupted, the sender will keep waiting until eventually an ACK shows up.
+However, this is impossible to happen. And the receiver also keeps waiting until sender sends something
+new. Thus, both the sender and receiver will enter a deadlock state. \\
 
-(b). no encryption service is provided. \\
-
-(c). The RFC suggests a single client should not maintain more than 2 connections to a server. But actually,
-it really depends on the implementation of the browser vendors. \\
-
-(d). Yes, it's possible. In a typical case described by the RFC, a client might have started to send a new request
-at the same time that the server has decided to close the "idle" connection. From the server's point of view,
-the connection is being closed while it was idle, but from the client's point of view, a request is in progress.\\
+Similarly, if there is no Wait-for-0-from-below self transition, same thing would happen and both sender
+and receiver will enter a deadlock state.
 \\
 
 

@@ -71,16 +71,21 @@
 \maketitle % Print the title
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 1
+%	PROBLEM 3
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 1}
+\section*{Problem 3}
 
-(a). False \\
-(b). True \\
-(c). False \\
-(d). False \\
-(e). False \\
+Sum of first two 8 bits: 01010011 + 01100110 = 10111001 \\
+Sum  with the third 8 bits: 10111001 + 01110100 = 00101110 \\
+So its 1's complement is: 11010001 \\
+Taking 1's complement for the sum is because at the receiver, when adding all 16-bit words
+including the checksum, the result expected should be all 1's. If a bit is 0, that indicates there
+are errors. \\
+
+All 1-bit errors will be detected because otherwise the sum will contain 0. But 2-bit errors are
+not guaranteed to be detected, for example, a bit is flipped in the data portion and another bit
+flipped in checksum. In this case, the sum would still be straight 1's.
 \\
 
 

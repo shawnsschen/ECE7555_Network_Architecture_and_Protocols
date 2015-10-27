@@ -158,70 +158,25 @@ as the new D0 expected.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 7
+%	PROBLEM 15
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 9}
-(a). $\Delta$ is the transmission delay on the access link:
+\section*{Problem 15}
+This is a pipelining scenario. According to the definition of utilization, there is:
 \begin{align*} 
 \begin{split}
-\Delta &= \frac{L}{R} \\
-&= \frac{850,000 \  bits}{15,000,000 \  bps} \\
-&= 0.0567 \quad seconds
+U_{sender} = \frac{n*L/R}{RTT+L/R} \geq 0.98
 \end{split}					
 \end{align*}
-The the average access delay can be calculated as:
+where L = 1500 bytes, R = 1 Gbps, RTT = 0.03 sec and n is the window size.
+Thus:
 \begin{align*} 
 \begin{split}
-T_{access} &= \frac{\Delta}{1-\Delta\beta} \\
-&= \frac{0.0567}{1-0.0567 \times 16} \\
-&= 0.61 \quad seconds
+U_{sender} &= \frac{n*L/R}{RTT+L/R} \\
+&=  \frac{n*1500*8/1000000000}{0.03+1500*8/1000000000} \geq 0.98
 \end{split}					
 \end{align*}
-So the total average response time is:
-\begin{align*} 
-\begin{split}
-T_{total} &= T_{access} + T_{Internet} \\
-&= 0.61 + 3 \\
-&= 3.61 \quad seconds
-\end{split}					
-\end{align*}
-
-(b). Since a cache in installed in the LAN, only $40\%$ of the requests will go into the Internet,
-so the $T_{access}$ now becomes:
-\begin{align*} 
-\begin{split}
-T_{access} &= \frac{\Delta}{1-\Delta \times (0.4\beta)} \\
-&= \frac{0.0567}{1-0.0567 \times (0.4 \times 16)} \\
-&= 0.089 \quad seconds
-\end{split}					
-\end{align*}
-For the missed requests, total average response time is:
-\begin{align*} 
-\begin{split}
-T_{total1} &= T_{access} + T_{Internet} \\
-&= 0.089 + 3 \\
-&= 3.089 \quad seconds
-\end{split}					
-\end{align*}
-For the hit requests, total average response time equals transmission delay because
-$t_{proc}, t_{queue} and t_{prop}$ can all be ignored. Thus:
-\begin{align*} 
-\begin{split}
-T_{total2} &= t_{trans} \\
-&= \frac{L}{R} \\
-&= \frac{850,000}{100,000,000} \\
-&= 0.0085 \quad seconds
-\end{split}					
-\end{align*}
-Finally, do a weighted average to get the overall average response time:
-\begin{align*} 
-\begin{split}
-T_{total} &= 0.4 \times T_{total1} + 0.6 \times T_{total2} \\
-&= 0.4 \times 3.089 + 0.6 \times 0.0085 \\
-&= 1.2407 \quad seconds
-\end{split}					
-\end{align*}
+Solve for n, there is $n=2451$ packets.
 \\
 
 

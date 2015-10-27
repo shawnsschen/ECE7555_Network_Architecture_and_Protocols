@@ -128,25 +128,16 @@ Similarly, if there is no Wait-for-0-from-below self transition, same thing woul
 and receiver will enter a deadlock state.
 \\
 
+\newpage
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 5
+%	PROBLEM 12
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 7}
-To resolve the URL and get the IP address, the total DNS lookup time is:
-\begin{align*} 
-\begin{split}
-T_{DNS} = \sum\limits_{i=1}^n RTT_{i} 
-\end{split}					
-\end{align*}
-Once we have the IP address, $RTT_{0}$ is needed to set up the connection,
-and another $RTT_{0}$ is needed to fetch the object. Thus, total elapsed time is:
-\begin{align*} 
-\begin{split}
-T_{total} = \sum\limits_{i=1}^n RTT_{i} + 2 \times RTT_{0}
-\end{split}					
-\end{align*}
+\section*{Problem 12}
+The protocol will still work, but it would probably cause a huge amount of retransmission. \\
+Imagine the timer is premature, thus it goes off before the first ACK comes back. An extra copy of
+the packet is sent. Then if bit error occurs causing the ACK to be corrupted, another extra copy of the packet will be sent again. So in the worst case, a packet could be sent 3 times plus the number of ACKs for previous packets on the way.
 \\
 
 

@@ -98,15 +98,120 @@ See figure \ref{fig:p27}.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 6
+%	PROBLEM 31
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 6}
-If the sender sends a packet with sequence number 1, and receiver confirms with an ACK 1.
-But the ACK is corrupted when it reaches the sender. The sender then resends packet 1. However,
-according to the FSM, receiver has already been waiting for packet 0. As a consequence, it rejects
-the resent packet 1 with NAK back to the sender. The sender keeps sending packet 1 and the receiver
-keeps rejecting. Both sides go into a deadlock state.
+\section*{Problem 31}
+After the first measurement:
+\begin{align*} 
+\begin{split}
+EstimatedRTT &= (1-\alpha)*EstimatedRTT + \alpha * SampleRTT \\
+&= (1-0.125)*100 + 0.125 * 106 \\
+&= 100.75 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+DevRTT &= (1-\beta)*DevRTT + \beta * | SampleRTT - EstimatedRTT | \\
+&= (1-0.25)*5 + 0.25 * | 106 - 100.75 | \\
+&= 5.0625 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
+&= 100.75 + 4*5.0625 \\
+&= 121 \quad ms
+\end{split}					
+\end{align*}
+After the second measurement:
+\begin{align*} 
+\begin{split}
+EstimatedRTT &= (1-\alpha)*EstimatedRTT + \alpha * SampleRTT \\
+&= (1-0.125)*100.75 + 0.125 * 120 \\
+&= 103.16 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+DevRTT &= (1-\beta)*DevRTT + \beta * | SampleRTT - EstimatedRTT | \\
+&= (1-0.25)*5.0625 + 0.25 * | 120 - 103.16 | \\
+&= 8 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
+&= 103.16 + 4*8 \\
+&= 135.16 \quad ms
+\end{split}					
+\end{align*}
+After the third measurement:
+\begin{align*} 
+\begin{split}
+EstimatedRTT &= (1-\alpha)*EstimatedRTT + \alpha * SampleRTT \\
+&= (1-0.125)*103.16 + 0.125 * 140 \\
+&= 107.765 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+DevRTT &= (1-\beta)*DevRTT + \beta * | SampleRTT - EstimatedRTT | \\
+&= (1-0.25)*8 + 0.25 * | 140 - 107.765 | \\
+&= 14.06 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
+&= 107.765 + 4*14.06 \\
+&= 164.005 \quad ms
+\end{split}					
+\end{align*}
+After the fourth measurement:
+\begin{align*} 
+\begin{split}
+EstimatedRTT &= (1-\alpha)*EstimatedRTT + \alpha * SampleRTT \\
+&= (1-0.125)*107.765 + 0.125 * 90 \\
+&= 105.54 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+DevRTT &= (1-\beta)*DevRTT + \beta * | SampleRTT - EstimatedRTT | \\
+&= (1-0.25)*14.06 + 0.25 * | 90 - 105.54 | \\
+&= 14.43 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
+&= 105.54 + 4*14.43 \\
+&= 163.26 \quad ms
+\end{split}					
+\end{align*}
+After the fifth measurement:
+\begin{align*} 
+\begin{split}
+EstimatedRTT &= (1-\alpha)*EstimatedRTT + \alpha * SampleRTT \\
+&= (1-0.125)*105.54 + 0.125 * 115 \\
+&= 106.72 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+DevRTT &= (1-\beta)*DevRTT + \beta * | SampleRTT - EstimatedRTT | \\
+&= (1-0.25)*14.43 + 0.25 * | 115 - 106.72 | \\
+&= 12.8925 \quad ms
+\end{split}					
+\end{align*}
+\begin{align*} 
+\begin{split}
+TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
+&= 106.72 + 4*12.8925 \\
+&= 158.29 \quad ms
+\end{split}					
+\end{align*}
 \\
 
 

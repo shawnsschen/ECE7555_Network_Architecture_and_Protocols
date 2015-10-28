@@ -296,18 +296,42 @@ And this is in terms of packets, transform it to bits per second, we have:
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 13
+%	PROBLEM 46
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 13}
-As figure \ref{fig:p13} shows, the first D0 is reordered and appears right before the new D0.
-This would confuse the receiver since receiver might take the reordered D0, which it has already received,
-as the new D0 expected.
-\begin{figure}[!ht]
-    \includegraphics[width=\textwidth]{images/P13.pdf}
-    \caption{Out-of-sequence problem}
-    \label{fig:p13}
-\end{figure}
+\section*{Problem 46}
+\textbf{(a).}
+Since the sending rate is limited by the link capacity, there is:
+\begin{align*} 
+\begin{split}
+10 Mbps &= \frac{W*MSS*8}{RTT} \\
+&= \frac{W*1500*8}{0.15}
+\end{split}					
+\end{align*}
+Solve for W, we get $W=125$ segments. \\
+
+\textbf{(b).}
+The average window size is:
+\begin{align*} 
+\begin{split}
+W_{avg} &= 0.75*W \\
+&= 0.75* 125 = 93.75 = 94\ MSS
+\end{split}					
+\end{align*}
+The average throughput is:
+\begin{align*} 
+\begin{split}
+\Gamma &= \frac{0.75*W}{RTT} \\
+&= \frac{W_{avg}*MSS*8}{RTT} \\
+&= \frac{94*1500*8}{0.15} \\
+&= 7520000 = 7.52 \ Mbps
+\end{split}					
+\end{align*}
+
+\textbf{(c).}
+Since the connection is assumed to be always in congestion avoidance, the window is growing in linear.
+After a packet loss, the window size will be reduced to half of the maximum window size.
+It needs $W-W/2=W/2$ rounds of RTT to reach maximum again. That is $W/2*RTT=125/2*0.15=9.375 \ ms$
 \\
 
 

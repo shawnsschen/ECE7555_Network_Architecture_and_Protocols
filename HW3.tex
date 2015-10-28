@@ -181,63 +181,39 @@ Solve for n, there is $n=2451$ packets.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 8
+%	PROBLEM 18
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 13}
-MAIL FROM in SMTP is used for the SMTP server to know whom the sender is. It needs to be a valid
-email address recognizable by the SMTP server. The From filed is just a human-readable text in the message body.
-\\
+\section*{Problem 18}
+The FSM of this protocol is described by figure \ref{fig:p18-s} and figure \ref{fig:p18-r}.
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/P18-sender.pdf}
+    \caption{Sender FSM}
+    \label{fig:p18-s}
+\end{figure}
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/P18-receiver.pdf}
+    \caption{Receiver FSM}
+    \label{fig:p18-r}
+\end{figure}
+As an example of explaining how this protocol works, suppose sender sends (D0, D1).
+D0 gets lost and D1 is successfully delivered. Once the receiver receives D1, it ACKs D1 with ACK1.
+After sender receives ACK1, it stays in the state that waits for ACK0. But since D0 is lost, there will be no ACK0 until timeout occurs. Then sender resends D0. Receiver receives D0 this time and sends back ACK0. Sender gets ACK0 and goes back to the initial state to send a new pair (D2, D3).
+
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 9
+%	PROBLEM 22
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 22}
-For client-server model, the minimum distribution time can be calculated by:
-\begin{align*} 
-\begin{split}
-D_{cs} &= max\{ \frac{NF}{u_s}, \frac{F}{d_{min}} \}
-\end{split}					
-\end{align*}
-For P2P model, the minimum distribution time can be calculated by:
-\begin{align*} 
-\begin{split}
-D_{P2P} &= max\{ \frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum \limits{i=1}^N u_i} \}
-\end{split}					
-\end{align*}
-For client-server model:
-\begin{table}[h!]
-  \begin{center}
-    \label{tab:table1}
-    \begin{tabular}{ l | l | c | r }
-      N/u & 300 Kbps & 700 Kbps & 2 Mbps \\
-      \hline
-      10 & 7500 sec & 7500 sec & 7500 sec \\
-      \hline
-      100 & 50000 sec & 50000 sec & 50000 sec \\
-      \hline
-      1000 & 500000 sec & 500000 sec & 500000 sec \\
-    \end{tabular}
-  \end{center}
-\end{table}
-\\
-For P2P model:
-\begin{table}[h!]
-  \begin{center}
-    \label{tab:table1}
-    \begin{tabular}{ l | l | c | r }
-      N/u & 300 Kbps & 700 Kbps & 2 Mbps \\
-      \hline
-      10 & 7500 sec & 7500 sec & 7500 sec \\
-      \hline
-      100 & 25000 sec & 15000 sec & 7500 sec \\
-      \hline
-      1000 & 45455 sec & 20548 sec & 7500 sec \\
-    \end{tabular}
-  \end{center}
-\end{table}
+\textbf{(a). }
+Assume all the previous k-1 ACKs are successfully received by the sender, the sender base is now at
+k. So the window looks like [k, k+3]. \\
+Also, there is another possibility that ACK for k-1 is lost. So the sender base is at k-1, and the window looks like [k-1, k+2]. Similarly, there could be multiple ACKs lost up to k-1. Thus the sender window can also be [k-2, k+1], [k-3, k] and [k-4, k-1]. \\
+
+\textbf{(b).}
+Since the receiver is expecting k, it means it has already received k-1. And the window size is 4, so the oldest unacknowledged packet can be k-4. Thus, the propagating ACKs could have value k-4, k-3, k-2, k-1.
 \\
 
 

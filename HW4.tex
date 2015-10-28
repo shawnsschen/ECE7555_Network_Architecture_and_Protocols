@@ -216,15 +216,14 @@ TimeoutInterval &= EstimatedRTT + 4*DevRTT \\
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 8
+%	PROBLEM 38
 %----------------------------------------------------------------------------------------
-\section*{Problem 8}
-Please see Figure \ref{fig:rdt3}.
-\begin{figure}[!ht]
-    \includegraphics[width=\textwidth]{images/rdt3-rcv-FSM.pdf}
-    \caption{Receiver FSM for rdt3.0}
-    \label{fig:rdt3}
-\end{figure}
+\section*{Problem 38}
+Yes. In the slow start phase, the sending rate is growing exponentially. When congestion occurs,
+the sender is sending segments twice more than in previous RTT. This implies, by doubling the sending
+rate, sender hits the link limit. So setting ssthresh = cwnd/2 is a proper choice because it gives us
+the approximate uncongested sending rate. And the sending rate when congestion occurs should be
+roughly cwnd/RTT.
 
 
 

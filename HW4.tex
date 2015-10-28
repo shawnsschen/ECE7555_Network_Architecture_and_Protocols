@@ -75,17 +75,25 @@
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 27}
+\textbf{(a).}
+Sequence number is $127+80=207$, source port is 302, destination port is 80. \\
 
-Sum of first two 8 bits: 01010011 + 01100110 = 10111001 \\
-Sum  with the third 8 bits: 10111001 + 01110100 = 00101110 \\
-So its 1's complement is: 11010001 \\
-Taking 1's complement for the sum is because at the receiver, when adding all 16-bit words
-including the checksum, the result expected should be all 1's. If a bit is 0, that indicates there
-are errors. \\
+\textbf{(b).}
+The ACK number should be the next expected byte, which is the cumulative bytes plus one.
+So the ACK number is 207, source port is 80 and destination port is 302. \\
 
-All 1-bit errors will be detected because otherwise the sum will contain 0. But 2-bit errors are
-not guaranteed to be detected, for example, a bit is flipped in the data portion and another bit
-flipped in checksum. In this case, the sum would still be straight 1's.
+\textbf{(c).}
+The receiver is expecting the segment with seqnum=127, but it gets a segment with seqnum=207.
+Then the receiver knows there is a missing segment. Accroding to the behavior of TCP. the receiver
+would still ACK 127. \\
+
+\textbf{(d).}
+See figure \ref{fig:p27}.
+\begin{figure}[!ht]
+    \includegraphics[width=\textwidth]{images/p27.pdf}
+    \caption{Coomunication sequence between A and B}
+    \label{fig:p27}
+\end{figure}
 \\
 
 

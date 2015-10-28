@@ -228,19 +228,33 @@ roughly cwnd/RTT.
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 11
+%	PROBLEM 40
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 11}
-If the receiver does not send back an ACK and the packet is corrupted, the sender will keep waiting until eventually an ACK shows up.
-However, this is impossible to happen. And the receiver also keeps waiting until sender sends something
-new. Thus, both the sender and receiver will enter a deadlock state. \\
+\section*{Problem 40}
+(a).
+TCP slow start is operating in [1, 6] and [23, 26]. These two segments of curve looks exponential. \\
+(b).
+Congestion avoidance is operating in [6, 16] and [17, 22]. These two segments show linearity. \\
+(c).
+It is detected by a triple duplicate ACK. Because the cwnd would have dropped to 1 if timeout occurs. \\
+(d).
+It is detected by a timeout because cwnd has dropped to 1. \\
+(e).
+Initial value is 32 because it enters congestion avoidance after $cwnd \geq 32$. \\
+(f).
+ssthresh is 21 since it should be set to half of cwnd when a triple duplicate ACK occurs. \\
+(g).
+ssthresh is 14 because when timeout occurs, it will be set to half of the cwnd, which is 28 at round 22. \\
+(h).
+In the slow start phase, segments sent in each round are 1, 2, 4, 8, 16, 32. So by the end of round 6, 63 segments are sent. And then it goes into congestion avoidance, where $cwnd=32$. So another 32 segments are sent in round 7. That is 95 segments in total. So segmetn 70 is sent in round 7. \\
+(i).
+After round 26, TCP enters fast recovery mode. It sets the ssthresh to cwnd/2, which is 4. And the new cwnd=ssthresh+3=7. \\
+(j).
+At round 16, ssthresh is set to cwnd/2=21. And cwnd is set to 1. Then TCP goes to slow start again. Thus, at round 19, the cwnd=4. \\
+(k).
+A timeout at round 22 would not affect previous rounds. So the total segments sent should be 24+25+26+27+28+29=159. \\
 
-Similarly, if there is no Wait-for-0-from-below self transition, same thing would happen and both sender
-and receiver will enter a deadlock state.
-\\
-
-\newpage
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 12

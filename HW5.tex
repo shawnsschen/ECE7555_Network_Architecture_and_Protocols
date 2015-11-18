@@ -347,6 +347,30 @@ Make $c(y, z) = \infty$ so that it is equivalent to poisoned reverse. \\
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 38}
+(a).
+$I = I_1$. 1d wants to reach the gateway as fast as possible according to the hot-potato routing rule. \\
+
+(b).
+$I = I_2$. $I_2$ leads to the closest NEXT-HOP router. \\
+
+(c).
+$I = I_1$. $I_1$ leads to the shortest AS-PATH. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 45
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 45}
+For a binary tree of routers, the network-layer broadcast only needs to send the packet once from the sender. The cost is thus $2+4+8+16+32=62$. For unicast emulation, the layer with leaves attached will only be covered once and the above layer twice and above four times and so on so forth. So the total cost is $32+16*2+8*4+4*8+2*16=160$.
+A topology like: \\
+\begin{verbatim}
+S - R - R - R - R -...
+    |   |   |   |
+    C   C   C   C
+\end{verbatim}
+will cause the farthest apart cost. (S for sender, R for router and C for client).
 
 
 \end{document}

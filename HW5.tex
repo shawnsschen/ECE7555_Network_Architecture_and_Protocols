@@ -245,6 +245,7 @@ The forwarding table at router A looks like:
   E & (A, B)  \\
   \hline
 \end{tabular}
+\\
 
 
 
@@ -253,6 +254,51 @@ The forwarding table at router A looks like:
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 28}
+Initially at router z:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+  x & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+  z & $\infty$ & 6 & 2 & $\infty$ & 0 \\
+  \hline
+\end{tabular}
+\\
+
+After one round of update:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & 1 & 0 & 3 & $\infty$ & 6 \\
+  x & $\infty$ & 3 & 0 & 3 & 2 \\
+  z & 7 & 5 & 2 & 5 & 0 \\
+  \hline
+\end{tabular}
+\\
+
+After a second round of update:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & 1 & 0 & 3 & 3 & 5 \\
+  x & 4 & 3 & 0 & 3 & 2 \\
+  z & 6 & 5 & 2 & 5 & 0 \\
+  \hline
+\end{tabular}
+\\
+
+This is how the distance table looks like eventually. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 32
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 32}
 
 
 \end{document}

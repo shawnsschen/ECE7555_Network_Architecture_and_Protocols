@@ -299,6 +299,35 @@ This is how the distance table looks like eventually. \\
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 32}
+No, according to the textbook, count-to-infinity problem only occurs when the cost of a link increases and that links happens to be part of a least-cost path. Connecting two nodes that previously do not have a link is equivalent to discovering a new path by replacing the infinite cost with a countable number. The cost is decreased. Thus, it still does not cause count-to-infinity problem. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 34
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 34}
+(a).
+Router y tells z and w that $D_y(x) = 4$. \\
+Router w tells y that $D_w(x) = \infty$. And w tells z that $D_w(x) = 5$. \\
+Router z tells y that $D_z(x) = 6$. And z tells w that $D_w(x) = \infty$. \\
+
+(b).
+Yes, there would be count-to-infinity problem. Because z tells y that it can reach x with a cost of 6. So y would choose the least-cost path, which is 6. However, this path eventually goes through y itself. So w would update its cost to x based on y, y updates its cost to x based on z and z updates its cost to x based on w, which is a loop. \\
+Assume the link cost changes at round 0. Then at round 1, y would tell w that $D_y(x) = 9$ and tell z that $D_y(x)=\infty$. At round 2, w would tell y that $D_w(x) = \infty$ and tell z that $D_w(x) = 10$. At round 3, z would tell w that $D_z(x) = \infty$ and tell y that $D_z(x)=11$. At round 4, y tells w that $D_y(x)=14$ and tells z that $D_y(x)=\infty$. Here we can see the loop, every 3 rounds, the cost of $D_y(x)$ is incremented by 5. So we can know that at round 26, w tells y that $D_w(x) = \infty$ and tells z that $D_y(x)=50$. At round 27, z discovers that the least-cost path to reach x is via itself. So it tells y and w that $D_z(x) = 50$. At round 28, w tells y that $D_w(x)=\infty$ and tells z that $D_w(x)=50$. At the same time, y tells w that $D_y(x)=53$ and tells z that $D_y(x)=\infty$. At round 29, w updates its distance vector so that it goes through z to reach x with a cost of 51. It tells y that $D_w(x)=51$. At round 30, y is aware of the new least-cost path so it changes its route to go via w. Then at round 31, every node is stablized. z goes via itself to reach x with a cost of 50. w goes via z to reach x with a cost of 51. y goes via w to reach x with a cost of 52. \\
+
+(c).
+Make $c(y, z) = \infty$ so that it is equivalent to poisoned reverse. \\
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 37
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 37}
 
 
 \end{document}

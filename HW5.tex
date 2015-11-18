@@ -219,6 +219,40 @@ No, we can no longer do the grouping based on the assumption of continuity. \\
 %----------------------------------------------------------------------------------------
 
 \section*{Problem No. 8}
+(a).
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  Step & N' & D(B),p(B) & D(C),p(C) & D(D),p(D) & D(E),p(E) \\
+  \hline
+  0 & A & 1,A & $\infty$ & 6,A & $\infty$ \\
+  1 & AB &  & 2,B & 6,A & 4,B \\
+  2 & ABC &  &  & 6,A & 3,C \\
+  3 & ABCE &  &  & 4,E &  \\
+  4 & ABCED &  &  &  &  \\
+  \hline
+\end{tabular}
+\\
+
+(b).
+The forwarding table at router A looks like:
+\begin{tabular}{ r | r }
+  \hline
+  Destination & Link \\
+  \hline
+  B & (A, B) \\
+  C & (A, B) \\
+  D & (A, B) \\
+  E & (A, B)  \\
+  \hline
+\end{tabular}
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 28
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 28}
 
 
 \end{document}

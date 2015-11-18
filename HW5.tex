@@ -76,6 +76,45 @@
 
 \section*{Problem 4}
 (a).
+The partial forwarding table in router A: \\
+\begin{tabular}{ r | r }
+  Destination Address & Output Interface \\
+  H3 & 3 \\
+\end{tabular}
+\\
+
+(b).
+In terms of a conventional router, it is impossible. Because the router only inspects the destination address field in a packet, in which case, H1-sourced packets and H2-sourced packets contain the same dst addr. However, newer technologies like OpenFlow can do this by checking the source address and form a more complicated rule in the forwarding table.
+\\
+
+(c).
+The forwarding table for VC looks lile: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 10 & 3 & 30 \\
+  2 & 20 & 4 & 40 \\
+\end{tabular}
+\\
+
+(d).
+For router B: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 30 & 2 & 31 \\
+\end{tabular}
+\\
+For router C: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 40 & 2 & 41 \\
+\end{tabular}
+\\
+For router D: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 31 & 3 & 50 \\
+  2 & 41 & 3 & 51 \\
+\end{tabular}
 \\
 
 

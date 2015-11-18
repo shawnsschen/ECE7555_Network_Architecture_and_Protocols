@@ -139,6 +139,30 @@ No, since they are destined for the same output port, part of the path is exclus
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 10}
+(a).
+The forwarding table looks like: \\
+\begin{tabular}{ r | r  }
+  Address Prefix & Outgoing Interface \\
+  11100000 00 & 0 \\
+  11100000 01000000 & 1 \\
+  1110000 & 2 \\
+  11100001 1 & 3 \\
+  Otherwise & 3 \\
+\end{tabular}
+\\
+
+(b).
+For address 1, it does not any of the listed prefixes, so the default entry is consulted and it goes to interface 3. \\
+For address 2, it matches the third entry, which leads to interface 2. \\
+For address 3, it matches the fourth entry, which leads to interface 3. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 12
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 12}
 
 
 \end{document}

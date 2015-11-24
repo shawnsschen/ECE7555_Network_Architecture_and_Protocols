@@ -29,6 +29,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage[export]{adjustbox}
 
 
 \usepackage{sectsty} % Allows customizing section commands
@@ -80,8 +81,14 @@
 
 \section*{\textbf{Lab 1}}
 \subsection*{Question 1}
-DHCP, DNS, ARP
-\\
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q1.pdf}
+    \caption{HTTP POST}
+    \label{fig:http-post}
+\end{figure}
+According to figure \ref{fig:http-post}, as displayed in the HTTP POST message, the IP addr and port of the source are: \\
+172.25.99.109 and 56670.
 
 
 

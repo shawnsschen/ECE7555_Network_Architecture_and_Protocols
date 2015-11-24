@@ -103,6 +103,24 @@ From figure \ref{fig:http-post}, we can see that gaia.cs.umass.edu is sending an
 According to figure \ref{fig:http-post2}, as displayed in the HTTP POST message, the IP addr and port of the source are: \\
 172.25.99.109 and 56670. \\
 
+\subsection*{Question 4}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q4.pdf}
+    \caption{TCP SYN}
+    \label{fig:tcp-syn}
+\end{figure}
+According to figure \ref{fig:tcp-syn}, the initial sequence number is 690321719. It is the SYN bit in TCP flags field that identifies it as a SYN segment. \\
+
+\subsection*{Question 5}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q5.pdf}
+    \caption{TCP SYNACK}
+    \label{fig:tcp-synack}
+\end{figure}
+According to figure \ref{fig:tcp-synack}, the sequence number in SYNACK is 2083160423. The ACK number is 690321720. gaia.cs.umass.edu randomly picks the sequence number and adds one for the received sequence number as the new ACK number. It is the SYNACK bit in TCP flags field that identifies it as a SYNACK segment.
+
 
 
 \section*{\textbf{Lab 2}}

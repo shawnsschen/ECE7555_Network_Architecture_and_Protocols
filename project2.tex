@@ -159,7 +159,25 @@ The receiver typically acknowledges 1460 bytes in an ACK segment. But according 
     \caption{TCP Throughput}
     \label{fig:tcp-thru}
 \end{figure}
-A high level throughput can be computed by $\tau = \frac{total size}{total time}$, where total size can be found by subtracting the sequence number $total bytes = 690474605-690321720-1=152884$ bytes. And total time can be found from the timestamp $total time = 1.237044 - 1.037671 = 0.199373 = 0.2$ seconds. So the throughput $\tau = \frac{152884}{0.2}=6.115$ Mbps. A more specific real-time throughput graph can be seen in figure \ref{fig:tcp-thru}.
+A high level throughput can be computed by $\tau = \frac{total size}{total time}$, where total size can be found by subtracting the sequence number $total bytes = 690474605-690321720-1=152884$ bytes. And total time can be found from the timestamp $total time = 1.237044 - 1.037671 = 0.199373 = 0.2$ seconds. So the throughput $\tau = \frac{152884}{0.2}=6.115$ Mbps. A more specific real-time throughput graph can be seen in figure \ref{fig:tcp-thru}. \\
+
+\subsection*{Question 13}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q13.pdf}
+    \caption{TCP Slow Start}
+    \label{fig:tcp-ss}
+\end{figure}
+According to figure \ref{fig:tcp-ss}, the number of segments sent was fixed to 6 after 0.3 seconds. So excluding the connection setup phase, the slow start phase starts from 0.03 seconds and ends by 0.3 seconds. Congestion avoidance takes over from 0.3 seconds. The difference from the ideal TCP is that the slow start did not grow exponentially (e.g. 1, 2, 4, 8, etc.). Rather, it repeated sending 2 segments twice and then sent a single outstanding segment. \\
+
+\subsection*{Question 14}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q14.pdf}
+    \caption{TCP Slow Start}
+    \label{fig:tcp-ss2}
+\end{figure}
+According to figure \ref{fig:tcp-ss2}, the slow start phase starts from 0.033 seconds and ends by 0.105 seconds. Congestion avoidance takes over from 0.105 seconds. The slow start phase accords with the ideal TCP in the textbook. \\
 
 
 

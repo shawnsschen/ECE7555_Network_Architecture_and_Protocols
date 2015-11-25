@@ -131,6 +131,37 @@ According to figure \ref{fig:tcp-synack}, the sequence number in SYNACK is 20831
 \end{figure}
 According to figure \ref{fig:tcp-http-post}, the sequence number contained is 690473568. \\
 
+\subsection*{Question 9}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q9.pdf}
+    \caption{TCP RECV Window}
+    \label{fig:tcp-rcv-window}
+\end{figure}
+Going through the entire trace, the minimum advertised window size appears during the 3-way handshake phase as shown by figure \ref{fig:tcp-rcv-window}, which is 14480 bytes. Since the receving window size keeps increasing, the sender is never throttled. \\
+
+\subsection*{Question 10}
+No, there is no retransmission in the trace. I checked the sequence number in all the segments leaving my computer. It appears that the sequence number is increasing with time. I did not see any duplicate segments or sequence numbers, which indicates nothing is retransmitted. \\
+
+\subsection*{Question 11}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q11.pdf}
+    \caption{TCP ACK}
+    \label{fig:tcp-ack}
+\end{figure}
+The receiver typically acknowledges 1460 bytes in an ACK segment. But according to figure \ref{fig:tcp-ack}, the receiver acknowledged 2744 bytes, which has already exceeded the MTU. So the receiver must have ACKed two segments in one single ACK. \\
+
+\subsection*{Question 12}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q12.pdf}
+    \caption{TCP Throughput}
+    \label{fig:tcp-thru}
+\end{figure}
+A high level throughput can be computed by $\tau = \frac{total size}{total time}$, where total size can be found by subtracting the sequence number $total bytes = 690474605-690321720-1=152884$ bytes. And total time can be found from the timestamp $total time = 1.237044 - 1.037671 = 0.199373 = 0.2$ seconds. So the throughput $\tau = \frac{152884}{0.2}=6.115$ Mbps. A more specific real-time throughput graph can be seen in figure \ref{fig:tcp-thru}.
+
+
 
 
 \section*{\textbf{Lab 2}}

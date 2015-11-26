@@ -199,7 +199,16 @@ According to figure \ref{fig:ip-header}, it is ICMP. \\
 According to figure \ref{fig:ip-header}, there are 20 bytes in IP header and $84-20=64$ bytes in the payload, where 84 bytes are the number of total bytes. \\
 
 \subsection*{Question 4}
-No, because the total length is just 84 bytes, which is not exceeding the MTU. \\
+No, because the flag and fragment offset are both 0. \\
+
+\subsection*{Question 5}
+Identification, TTL and checksum always change. \\
+
+\subsection*{Question 6}
+Source IP and destination IP stay constant. Upper layer protocol, header length and DCSP also stay constant. Src IP and dst IP must stay constant, other wise there is no way to detect the itermmediate routers hop by hop on the path. TTL and checksum must change because we want to detect the intermmediate routers by increasing TTL and checksum would change as TTL changes. \\
+
+\subsection*{Question 7}
+The identification increases by 1 for every ICMP echo request. \\
 
 
 

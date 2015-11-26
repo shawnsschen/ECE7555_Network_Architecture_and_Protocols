@@ -183,23 +183,23 @@ According to figure \ref{fig:tcp-ss2}, the slow start phase starts from 0.033 se
 
 
 \section*{\textbf{Lab 2}}
+\subsection*{Question 1}
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{images/http-cap.pdf}
-    \caption{HTTP GET and response}
-    \label{fig:http}
+    \includegraphics[width=\textwidth]{images/lab2-q1.pdf}
+    \caption{IPv4 Header}
+    \label{fig:ip-header}
 \end{figure}
+According to figure \ref{fig:ip-header}, the IP address of my computer is 192.168.1.102. \\
 
-\subsection*{Question 1}
-My browser is running HTTP 1.1. It can be found from the GET packet:
-\begin{verbatim}
-GET /wireshark-labs/HTTP-wireshark-file1.html HTTP/1.1\r\n
-\end{verbatim}
+\subsection*{Question 2}
+According to figure \ref{fig:ip-header}, it is ICMP. \\
 
-The server is running HTTP 1.1. It can be found from the response packet:
-\begin{verbatim}
-HTTP/1.1 200 OK\r\n
-\end{verbatim}
+\subsection*{Question 3}
+According to figure \ref{fig:ip-header}, there are 20 bytes in IP header and $84-20=64$ bytes in the payload, where 84 bytes are the number of total bytes. \\
+
+\subsection*{Question 4}
+No, because the total length is just 84 bytes, which is not exceeding the MTU. \\
 
 
 

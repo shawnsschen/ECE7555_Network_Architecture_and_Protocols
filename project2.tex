@@ -131,6 +131,9 @@ According to figure \ref{fig:tcp-synack}, the sequence number in SYNACK is 20831
 \end{figure}
 According to figure \ref{fig:tcp-http-post}, the sequence number contained is 690473568. \\
 
+\subsection*{Question 8}
+The first segment is 565 bytes and the rest are 1460 bytes. \\
+
 \subsection*{Question 9}
 \begin{figure}[!ht]
     \centering
@@ -205,11 +208,58 @@ No, because the flag and fragment offset are both 0. \\
 Identification, TTL and checksum always change. \\
 
 \subsection*{Question 6}
-Source IP and destination IP stay constant. Upper layer protocol, header length and DCSP also stay constant. Src IP and dst IP must stay constant, other wise there is no way to detect the itermmediate routers hop by hop on the path. TTL and checksum must change because we want to detect the intermmediate routers by increasing TTL and checksum would change as TTL changes. \\
+Source IP and destination IP stay constant. Version, upper layer protocol, header length and DCSP also stay constant. Src IP and dst IP must stay constant, other wise there is no way to detect the itermmediate routers hop by hop on the path. TTL and checksum must change because we want to detect the intermmediate routers by increasing TTL and checksum would change as TTL changes. \\
 
 \subsection*{Question 7}
 The identification increases by 1 for every ICMP echo request. \\
 
+\subsection*{Question 8}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab2-q8.pdf}
+    \caption{ICMP Echo Reply}
+    \label{fig:ip-icmp}
+\end{figure}
+According to figure \ref{fig:ip-icmp}, the identification is 40316 and TTL is 255. \\
+
+\subsection*{Question 9}
+Identification will change for every TTL-exceeded message but TTL remains the same. Because idetification is used to identify different pairs of ICMP packets, if they are the same, those packets will be considered as fragments of a large IP packet. TTL remains the same because it is from the same router. \\
+
+\subsection*{Question 10}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab2-q10.pdf}
+    \caption{ICMP Echo Reply (2000-byte)}
+    \label{fig:ip-icmp2000}
+\end{figure}
+According to figure \ref{fig:ip-icmp2000}, yes, it is fragmented. \\
+
+\subsection*{Question 11}
+The more fragments bit in the flags field is set to 1, which indicates so. The fragment offset is 0 means this is the first fragment. This datagram is 1500 bytes in total. \\
+
+\subsection*{Question 12}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab2-q12.pdf}
+    \caption{ICMP Fragment}
+    \label{fig:ip-fragment}
+\end{figure}
+According to figure \ref{fig:ip-fragment}, the fragment offset is 1480, which indicates it is not the first fragment. There are no more fragments because the more fragment bit is set to 0. \\
+
+\subsection*{Question 13}
+Total length, flags, fragment offset and checksum have changed. \\
+
+\subsection*{Question 14}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab2-q14.pdf}
+    \caption{ICMP Fragment (3500-byte)}
+    \label{fig:ip-fragment3}
+\end{figure}
+According to figure \ref{fig:ip-fragment3}, 3 fragments are created. \\
+
+\subsection*{Question 15}
+The first and second fragment are different in fragment offset and checksum. The third is different from the previous two in total length, flags, fragment offset and checksum. 
 
 
 

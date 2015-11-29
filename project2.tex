@@ -131,8 +131,36 @@ According to figure \ref{fig:tcp-synack}, the sequence number in SYNACK is 20831
 \end{figure}
 According to figure \ref{fig:tcp-http-post}, the sequence number contained is 690473568. \\
 
+\subsection*{Question 7}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q7.pdf}
+    \caption{6 Segments}
+    \label{fig:6seg}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{images/lab1-q7-2.pdf}
+    \caption{6-segment RTT}
+    \label{fig:6seg-rtt}
+\end{figure}
+According to figure \ref{fig:6seg} and \ref{fig:6seg-rtt}, the first 6 segments are No. 4, 5, 7, 8, 10, 11 and their corresponding sequence numbers are 232129013, 232129578, 232131038, 232132498, 232133958 and 232135418. Segment 1 was sent at Aug 21, 2004 09:44:20.596858000 EDT, segment 2 was sent at Aug 21, 2004 09:44:20.612118000 EDT, segment 3 was sent at Aug 21, 2004 09:44:20.624407000 EDT, segment 4 was sent at Aug 21, 2004 09:44:20.625071000 EDT, segment 5 was sent at Aug 21, 2004 09:44:20.647786000 EDT and segment 6 was sent at Aug 21, 2004 09:44:20.648538000 EDT. ACK 1 arrived at Aug 21, 2004 09:44:20.624318000 EDT, ACK2 arrived at Aug 21, 2004 09:44:20.647675000 EDT, ACK 3 arrived at Aug 21, 2004 09:44:20.694466000 EDT, ACK 4 arrived at Aug 21, 2004 09:44:20.739499000 EDT, ACK 5 arrived at Aug 21, 2004 09:44:20.787680000 EDT and ACK 6 arrived at Aug 21, 2004 09:44:20.838183000 EDT. \\
+$RTT_1 = 0.02746$ sec \\
+$RTT_2 = 0.035557$ sec \\
+$RTT_3 = 0.070059$ sec \\
+$RTT_4 = 0.11443$ sec \\
+$RTT_5 = 0.13989$ sec \\
+$RTT_6 = 0.18964$ sec \\
+After 1 RTT, $EstimatedRTT = RTT_1 = 27.46$ ms \\
+After 2 RTT, $EstimatedRTT =  0.875 * 0.02746 + 0.125 * 0.035557 = 28.47$ ms \\
+After 3 RTT, $EstimatedRTT =  0.875 * 0.0285 + 0.125 * 0.070059 = 33.69$ ms \\
+After 4 RTT, $EstimatedRTT =  0.875 * 0.0337+ 0.125 * 0.11443 = 43.79$ ms \\
+After 5 RTT, $EstimatedRTT =  0.875 * 0.0438 + 0.125 * 0.13989 = 55.81$ ms \\
+After 6 RTT, $EstimatedRTT =  0.875 * 0.0558 + 0.125 * 0.18964 = 72.53$ ms \\
+ \\
+
 \subsection*{Question 8}
-The first segment is 565 bytes and the rest are 1460 bytes. \\
+According to figure \ref{fig:6seg}, the first segment is 565 bytes and the rest are 1460 bytes. \\
 
 \subsection*{Question 9}
 \begin{figure}[!ht]

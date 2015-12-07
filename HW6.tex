@@ -118,19 +118,49 @@ Total effeciency is $p_A(1-p_B)+p_B(1-p_A)$. \\
 $p_B(1-2p_B)$. A's throughput is not twice of B's. \\
 To make that happen, there should be $p_A(1-p_B)=2p_B(1-p_A)$. Thus, there should be $p_B=\frac{p_A}{2-p_A}$. \\
 
-(c). A's average throughput can be given by $2p(1-p)^{N-1}*R$. Other nodes have the same average throughput of $p(1-2p)(1-p)^{N-2}*R$.
+(c). A's average throughput can be given by $2p(1-p)^{N-1}*R$. Other nodes have the same average throughput of $p(1-2p)(1-p)^{N-2}*R$. \\
+
 
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 12
+%	PROBLEM 14
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 12}
-For interface 2, the range is from 11100000 to 11111111. There are 32 addresses in the range. \\
-For interface 1, the range is from 10000000 to 10111111. There are 64 addresses in the range. \\
-For interface 0, the range is from 11000000 to 11011111. Interface 2 takes the rest due to longest prefix match. There are 32 addresses in the range. \\
-For interface 3, the range is from 00000000 to 01111111. There are 128 addresses in the range. \\
+\section*{Problem 14}
+(a). \\
+A: 192.168.1.2 \\
+B: 192.168.1.3 \\
+Interface of left router connecting subnet 1: 192.168.1.1 \\
+C: 192.168.2.2 \\
+D: 192.168.2.3 \\
+Interface of left router connecting subnet 2: 192.168.2.1 \\
+Interface of right router connecting subnet 2: 192.168.2.4 \\
+E: 192.168.3.2 \\
+F: 192.168.3.3 \\
+Interface of right router connecting subnet 3: 192.168.3.1 \\
+
+(b). \\
+A: 00-00-00-00-00-01 \\
+B: 00-00-00-00-00-02 \\
+Interface of left router connecting subnet 1: 00-00-00-00-00-03 \\
+C: 00-00-00-00-00-04 \\
+D: 00-00-00-00-00-05 \\
+Interface of left router connecting subnet 2: 00-00-00-00-00-06 \\
+Interface of right router connecting subnet 2: 00-00-00-00-00-07 \\
+E: 00-00-00-00-00-08 \\
+F: 00-00-00-00-00-09 \\
+Interface of right router connecting subnet 3: 00-00-00-00-00-10 \\
+
+(c). \\
+1. routing table in E directs the datagram via interface 192.168.3.2 \\
+2. adapter in E creates Ethernet frame with Ethernet destination address 00-00-00-00-00-10 \\
+3. right router receives the packet and extracts the datagram. forwarding table in this router routes the datagram to 192.168.2.1 \\
+4. right router then sends the Ethernet frame with the destination address of 00-00-00-00-00-06 and source address of 00-00-00-00-00-07 via its interface with IP address of 198.162.2.4 \\
+5. left router receives the datagram and repeats the same process (3,4) and eventually sends to B. \\
+
+(d). \\
+Before starting the process in (c), E first needs to update its ARP table. It first sends out an ARP query via broadcast. Right router responds with an ARP response indicating the desired MAC address is 00-00-00-00-00-10. Then E goes over the steps in (c).
 
 
 

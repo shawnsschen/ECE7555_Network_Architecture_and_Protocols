@@ -98,7 +98,7 @@ Since G=10011, we know r=4. Thus $D*2^r=10101010100000$. Then we can compute R b
 \begin{split}
 R&=remainder(\frac{D*2^r}{G}) \\
 &= remainder(\frac{10101010100000}{10011}) \\
-&= 0110
+&= 0100
 \end{split}					
 \end{align*}
 \\
@@ -183,187 +183,18 @@ S1 learns B's MAC and interface, thus adds an entry for B. But then it discards 
 
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 20
+%	PROBLEM 19
 %----------------------------------------------------------------------------------------
 
-\section*{Problem 20}
-Assume the MP3 is carried by TCP, which adds another 20-byte header to the datagram. Thus the total available payload length is 1500-20-20=1460 bytes. \\
-The MP3 needs to be divided into $\frac{5000000}{1460}=3425$ datagrams with the first 3424 datagrams of 1500 bytes and the last one of 1000 bytes. \\
+\section*{Problem 19}
+Since $K_A=0, K_B=1$, A will retransmit immediately while B will wait. The time that B waits is $K_B*512$ bit times, which is $K_B*512*1/10Mbps=51.2$ us. Considering the propagation of the signal, it takes $245*1/10Mbps=24.5$ us to collide and $48*1/10Mbps=4.8$ us to send the jam signal. So B shcedules its retransmission at $t=80.5$ us. But B needs to sense an idle channel before sending. \\
 
+A receives the collision signal after 245 bits time and transmits the jam frame for 48 bits time. Then it needs to wait for another 245 bits time to wait for the last bit from B to leav the wire. Finally, it waits for 96 bits time as the minimum inter-frame gap to start sending. So A starts to transmit at $t=(245+48+245+96)*1/10Mbps=63.4$ us. \\
 
+At $t=63.4+245*1/10Mbps=87.9$ us, A's signal reaches B. \\
 
+Yes, B refrains because at $t=80.5$ us, B senses A's signal.
 
-%----------------------------------------------------------------------------------------
-%	PROBLEM 22
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 22}
-(a).
-We can first capture all the packets going outside and extract the identification field. Since packets sent from the same host would have a continuous identification number. We just need to count how many non-consistent groups of identification numbers are there. That is the number of hosts behind the NAT. \\
-
-(b).
-No, we can no longer do the grouping based on the assumption of continuity. \\
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 8
-%----------------------------------------------------------------------------------------
-
-\section*{Problem No. 8}
-(a).
-\begin{tabular}{ r | r | r | r | r | r }
-  \hline
-  Step & N' & D(B),p(B) & D(C),p(C) & D(D),p(D) & D(E),p(E) \\
-  \hline
-  0 & A & 1,A & $\infty$ & 6,A & $\infty$ \\
-  1 & AB &  & 2,B & 6,A & 4,B \\
-  2 & ABC &  &  & 6,A & 3,C \\
-  3 & ABCE &  &  & 4,E &  \\
-  4 & ABCED &  &  &  &  \\
-  \hline
-\end{tabular}
-\\
-
-(b).
-The forwarding table at router A looks like:
-\begin{tabular}{ r | r }
-  \hline
-  Destination & Link \\
-  \hline
-  B & (A, B) \\
-  C & (A, B) \\
-  D & (A, B) \\
-  E & (A, B)  \\
-  \hline
-\end{tabular}
-\\
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 28
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 28}
-Initially at router z:
-\begin{tabular}{ r | r | r | r | r | r }
-  \hline
-  & u & v & x & y & z \\
-  \hline
-  v & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
-  x & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
-  z & $\infty$ & 6 & 2 & $\infty$ & 0 \\
-  \hline
-\end{tabular}
-\\
-
-After one round of update:
-\begin{tabular}{ r | r | r | r | r | r }
-  \hline
-  & u & v & x & y & z \\
-  \hline
-  v & 1 & 0 & 3 & $\infty$ & 6 \\
-  x & $\infty$ & 3 & 0 & 3 & 2 \\
-  z & 7 & 5 & 2 & 5 & 0 \\
-  \hline
-\end{tabular}
-\\
-
-After a second round of update:
-\begin{tabular}{ r | r | r | r | r | r }
-  \hline
-  & u & v & x & y & z \\
-  \hline
-  v & 1 & 0 & 3 & 3 & 5 \\
-  x & 4 & 3 & 0 & 3 & 2 \\
-  z & 6 & 5 & 2 & 5 & 0 \\
-  \hline
-\end{tabular}
-\\
-
-This is how the distance table looks like eventually. \\
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 32
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 32}
-No, according to the textbook, count-to-infinity problem only occurs when the cost of a link increases and that links happens to be part of a least-cost path. Connecting two nodes that previously do not have a link is equivalent to discovering a new path by replacing the infinite cost with a countable number. The cost is decreased. Thus, it still does not cause count-to-infinity problem. \\
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 34
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 34}
-(a).
-Router y tells z and w that $D_y(x) = 4$. \\
-Router w tells y that $D_w(x) = \infty$. And w tells z that $D_w(x) = 5$. \\
-Router z tells y that $D_z(x) = 6$. And z tells w that $D_w(x) = \infty$. \\
-
-(b).
-Yes, there would be count-to-infinity problem. Because z tells y that it can reach x with a cost of 6. So y would choose the least-cost path, which is 6. However, this path eventually goes through y itself. So w would update its cost to x based on y, y updates its cost to x based on z and z updates its cost to x based on w, which is a loop. \\
-Assume the link cost changes at round 0. Then at round 1, y would tell w that $D_y(x) = 9$ and tell z that $D_y(x)=\infty$. At round 2, w would tell y that $D_w(x) = \infty$ and tell z that $D_w(x) = 10$. At round 3, z would tell w that $D_z(x) = \infty$ and tell y that $D_z(x)=11$. At round 4, y tells w that $D_y(x)=14$ and tells z that $D_y(x)=\infty$. Here we can see the loop, every 3 rounds, the cost of $D_y(x)$ is incremented by 5. So we can know that at round 26, w tells y that $D_w(x) = \infty$ and tells z that $D_y(x)=50$. At round 27, z discovers that the least-cost path to reach x is via itself. So it tells y and w that $D_z(x) = 50$. At round 28, w tells y that $D_w(x)=\infty$ and tells z that $D_w(x)=50$. At the same time, y tells w that $D_y(x)=53$ and tells z that $D_y(x)=\infty$. At round 29, w updates its distance vector so that it goes through z to reach x with a cost of 51. It tells y that $D_w(x)=51$. At round 30, y is aware of the new least-cost path so it changes its route to go via w. Then at round 31, every node is stablized. z goes via itself to reach x with a cost of 50. w goes via z to reach x with a cost of 51. y goes via w to reach x with a cost of 52. \\
-
-(c).
-Make $c(y, z) = \infty$ so that it is equivalent to poisoned reverse. \\
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 37
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 37}
-(a).
-3c learns from eBGP because it is the gateway router in AS3 that can reach AS4 (where x lies). \\
-
-(b).
-3a learns from iBGP because it cannot directly reach AS4, the information should be passed along from 3c. \\
-
-(c).
-1c learns from eBGP because it is the gateway router that is connected to AS3 (which the routing information is passed from). \\
-
-(d).
-1d learns from iBGP for the same reason as (b). \\
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 38
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 38}
-(a).
-$I = I_1$. 1d wants to reach the gateway as fast as possible according to the hot-potato routing rule. \\
-
-(b).
-$I = I_2$. $I_2$ leads to the closest NEXT-HOP router. \\
-
-(c).
-$I = I_1$. $I_1$ leads to the shortest AS-PATH. \\
-
-
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 45
-%----------------------------------------------------------------------------------------
-
-\section*{Problem 45}
-For a binary tree of routers, the network-layer broadcast only needs to send the packet once from the sender. The cost is thus $2+4+8+16+32=62$. For unicast emulation, the layer with leaves attached will only be covered once and the above layer twice and above four times and so on so forth. So the total cost is $32+16*2+8*4+4*8+2*16=160$.
-A topology like: \\
-\begin{verbatim}
-S - R - R - R - R -...
-    |   |   |   |
-    C   C   C   C
-\end{verbatim}
-will cause the farthest apart cost. (S for sender, R for router and C for client).
 
 
 \end{document}

@@ -170,15 +170,14 @@ Before starting the process in (c), E first needs to update its ARP table. It fi
 %----------------------------------------------------------------------------------------
 
 \section*{Problem 15}
-The forwarding table looks like: \\
-\begin{tabular}{ r | r  }
-  Address Prefix & Outgoing Interface \\
-  224.0/10 & 0 \\
-  224.64/16 & 1 \\
-  224/7 & 2 \\
-  225.128/9 & 3 \\
-  Otherwise & 3 \\
-\end{tabular}
+(a). No, because they are in the same subnet. Source IP is E's IP, destination IP is F's IP. Source MAC is E's MAC, destination MAC is F's MAC. \\
+
+(b). No, because E and B are not in the same subnet. Source IP is E's IP, destination IP is B's IP. Source MAC is E's MAC, destination MAC is the MAC of the interface of R1 that connects to subnet 3. \\
+
+(c). S1 will broadcast the ARP to all interfaces except for the incoming interface. It also learns A's MAC and its connected interface. It updates its forwarding table and adds an entry for A. \\
+Yes, R1 also receives the ARP. No, R1 will not forward the ARP. \\
+No, because the ARP query already contains A's MAC. \\
+S1 learns B's MAC and interface, thus adds an entry for B. But then it discards all frames between A and B because they are from the same interface from the perspective of S1.
 \\
 
 

@@ -1,0 +1,376 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[titlepage, paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{listings}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{graphicx}
+
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{University of Virginia} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge ECE/CS 5565 Homework 6 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Shawn (Shuoshuo) Chen\\sc7cq@virginia.edu} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 4}
+(a).
+The partial forwarding table in router A: \\
+\begin{tabular}{ r | r }
+  Destination Address & Output Interface \\
+  H3 & 3 \\
+\end{tabular}
+\\
+
+(b).
+In terms of a conventional router, it is impossible. Because the router only inspects the destination address field in a packet, in which case, H1-sourced packets and H2-sourced packets contain the same dst addr. However, newer technologies like OpenFlow can do this by checking the source address and form a more complicated rule in the forwarding table.
+\\
+
+(c).
+The forwarding table for VC looks lile: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 10 & 3 & 30 \\
+  2 & 20 & 4 & 40 \\
+\end{tabular}
+\\
+
+(d).
+For router B: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 30 & 2 & 31 \\
+\end{tabular}
+\\
+For router C: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 40 & 2 & 41 \\
+\end{tabular}
+\\
+For router D: \\
+\begin{tabular}{ r | r | r | r }
+  Incoming Interface & Incoming VC \# & Outgoing Interface & Outgoing VC \# \\
+  1 & 31 & 3 & 50 \\
+  2 & 41 & 3 & 51 \\
+\end{tabular}
+\\
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 7
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 7}
+(a).
+No, only one packet can use the bus at the same time. The shared bus is exclusive. \\
+
+(b).
+Yes, as long as the two packets travel along two different paths and not intervene each other, this can be done in parallel. \\
+
+(c).
+No, since they are destined for the same output port, part of the path is exclusive. The switching fabric can only serve one packet at a time. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 10
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 10}
+(a).
+The forwarding table looks like: \\
+\begin{tabular}{ r | r  }
+  Address Prefix & Outgoing Interface \\
+  11100000 00 & 0 \\
+  11100000 01000000 & 1 \\
+  1110000 & 2 \\
+  11100001 1 & 3 \\
+  Otherwise & 3 \\
+\end{tabular}
+\\
+
+(b).
+For address 1, it does not any of the listed prefixes, so the default entry is consulted and it goes to interface 3. \\
+For address 2, it matches the third entry, which leads to interface 2. \\
+For address 3, it matches the fourth entry, which leads to interface 3. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 12
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 12}
+For interface 2, the range is from 11100000 to 11111111. There are 32 addresses in the range. \\
+For interface 1, the range is from 10000000 to 10111111. There are 64 addresses in the range. \\
+For interface 0, the range is from 11000000 to 11011111. Interface 2 takes the rest due to longest prefix match. There are 32 addresses in the range. \\
+For interface 3, the range is from 00000000 to 01111111. There are 128 addresses in the range. \\
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 15
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 15}
+The forwarding table looks like: \\
+\begin{tabular}{ r | r  }
+  Address Prefix & Outgoing Interface \\
+  224.0/10 & 0 \\
+  224.64/16 & 1 \\
+  224/7 & 2 \\
+  225.128/9 & 3 \\
+  Otherwise & 3 \\
+\end{tabular}
+\\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 20
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 20}
+Assume the MP3 is carried by TCP, which adds another 20-byte header to the datagram. Thus the total available payload length is 1500-20-20=1460 bytes. \\
+The MP3 needs to be divided into $\frac{5000000}{1460}=3425$ datagrams with the first 3424 datagrams of 1500 bytes and the last one of 1000 bytes. \\
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 22
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 22}
+(a).
+We can first capture all the packets going outside and extract the identification field. Since packets sent from the same host would have a continuous identification number. We just need to count how many non-consistent groups of identification numbers are there. That is the number of hosts behind the NAT. \\
+
+(b).
+No, we can no longer do the grouping based on the assumption of continuity. \\
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 8
+%----------------------------------------------------------------------------------------
+
+\section*{Problem No. 8}
+(a).
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  Step & N' & D(B),p(B) & D(C),p(C) & D(D),p(D) & D(E),p(E) \\
+  \hline
+  0 & A & 1,A & $\infty$ & 6,A & $\infty$ \\
+  1 & AB &  & 2,B & 6,A & 4,B \\
+  2 & ABC &  &  & 6,A & 3,C \\
+  3 & ABCE &  &  & 4,E &  \\
+  4 & ABCED &  &  &  &  \\
+  \hline
+\end{tabular}
+\\
+
+(b).
+The forwarding table at router A looks like:
+\begin{tabular}{ r | r }
+  \hline
+  Destination & Link \\
+  \hline
+  B & (A, B) \\
+  C & (A, B) \\
+  D & (A, B) \\
+  E & (A, B)  \\
+  \hline
+\end{tabular}
+\\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 28
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 28}
+Initially at router z:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+  x & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+  z & $\infty$ & 6 & 2 & $\infty$ & 0 \\
+  \hline
+\end{tabular}
+\\
+
+After one round of update:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & 1 & 0 & 3 & $\infty$ & 6 \\
+  x & $\infty$ & 3 & 0 & 3 & 2 \\
+  z & 7 & 5 & 2 & 5 & 0 \\
+  \hline
+\end{tabular}
+\\
+
+After a second round of update:
+\begin{tabular}{ r | r | r | r | r | r }
+  \hline
+  & u & v & x & y & z \\
+  \hline
+  v & 1 & 0 & 3 & 3 & 5 \\
+  x & 4 & 3 & 0 & 3 & 2 \\
+  z & 6 & 5 & 2 & 5 & 0 \\
+  \hline
+\end{tabular}
+\\
+
+This is how the distance table looks like eventually. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 32
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 32}
+No, according to the textbook, count-to-infinity problem only occurs when the cost of a link increases and that links happens to be part of a least-cost path. Connecting two nodes that previously do not have a link is equivalent to discovering a new path by replacing the infinite cost with a countable number. The cost is decreased. Thus, it still does not cause count-to-infinity problem. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 34
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 34}
+(a).
+Router y tells z and w that $D_y(x) = 4$. \\
+Router w tells y that $D_w(x) = \infty$. And w tells z that $D_w(x) = 5$. \\
+Router z tells y that $D_z(x) = 6$. And z tells w that $D_w(x) = \infty$. \\
+
+(b).
+Yes, there would be count-to-infinity problem. Because z tells y that it can reach x with a cost of 6. So y would choose the least-cost path, which is 6. However, this path eventually goes through y itself. So w would update its cost to x based on y, y updates its cost to x based on z and z updates its cost to x based on w, which is a loop. \\
+Assume the link cost changes at round 0. Then at round 1, y would tell w that $D_y(x) = 9$ and tell z that $D_y(x)=\infty$. At round 2, w would tell y that $D_w(x) = \infty$ and tell z that $D_w(x) = 10$. At round 3, z would tell w that $D_z(x) = \infty$ and tell y that $D_z(x)=11$. At round 4, y tells w that $D_y(x)=14$ and tells z that $D_y(x)=\infty$. Here we can see the loop, every 3 rounds, the cost of $D_y(x)$ is incremented by 5. So we can know that at round 26, w tells y that $D_w(x) = \infty$ and tells z that $D_y(x)=50$. At round 27, z discovers that the least-cost path to reach x is via itself. So it tells y and w that $D_z(x) = 50$. At round 28, w tells y that $D_w(x)=\infty$ and tells z that $D_w(x)=50$. At the same time, y tells w that $D_y(x)=53$ and tells z that $D_y(x)=\infty$. At round 29, w updates its distance vector so that it goes through z to reach x with a cost of 51. It tells y that $D_w(x)=51$. At round 30, y is aware of the new least-cost path so it changes its route to go via w. Then at round 31, every node is stablized. z goes via itself to reach x with a cost of 50. w goes via z to reach x with a cost of 51. y goes via w to reach x with a cost of 52. \\
+
+(c).
+Make $c(y, z) = \infty$ so that it is equivalent to poisoned reverse. \\
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 37
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 37}
+(a).
+3c learns from eBGP because it is the gateway router in AS3 that can reach AS4 (where x lies). \\
+
+(b).
+3a learns from iBGP because it cannot directly reach AS4, the information should be passed along from 3c. \\
+
+(c).
+1c learns from eBGP because it is the gateway router that is connected to AS3 (which the routing information is passed from). \\
+
+(d).
+1d learns from iBGP for the same reason as (b). \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 38
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 38}
+(a).
+$I = I_1$. 1d wants to reach the gateway as fast as possible according to the hot-potato routing rule. \\
+
+(b).
+$I = I_2$. $I_2$ leads to the closest NEXT-HOP router. \\
+
+(c).
+$I = I_1$. $I_1$ leads to the shortest AS-PATH. \\
+
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 45
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 45}
+For a binary tree of routers, the network-layer broadcast only needs to send the packet once from the sender. The cost is thus $2+4+8+16+32=62$. For unicast emulation, the layer with leaves attached will only be covered once and the above layer twice and above four times and so on so forth. So the total cost is $32+16*2+8*4+4*8+2*16=160$.
+A topology like: \\
+\begin{verbatim}
+S - R - R - R - R -...
+    |   |   |   |
+    C   C   C   C
+\end{verbatim}
+will cause the farthest apart cost. (S for sender, R for router and C for client).
+
+
+\end{document}

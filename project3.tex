@@ -1,0 +1,531 @@
+%% bare_conf_compsoc.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE Computer
+%% Society conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[conference,compsoc]{IEEEtran}
+% Some/most Computer Society conferences require the compsoc mode option,
+% but others may want the standard conference format.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{A Survey on Security in Named Data Networking}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Shuoshuo Chen}
+\IEEEauthorblockA{University of Virginia\\
+Charlottesville, Virginia 22903\\
+Email: sc7cq@vieginia.edu}
+\and
+\IEEEauthorblockN{Fabrice Mizero}
+\IEEEauthorblockA{University of Virginia\\
+Charlottesville, Virginia 22903\\
+Email: fm9ab@virginia.edu}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page (and note that there is less available width in this regard for
+% compsoc conferences compared to traditional conferences), use this
+% alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+Over the past three decades, since its invention, the Internet has evolved in both its sheer volume and usage. The Internet's core protocol, Internet Protocol (IP), has proven its usability and effectiveness to support a communication network. However, current Internet usage requires more than a communication network due to a shift in the nature of Internet applications from simple email application to large content producers such as NetFlix, Google, Amazon, etc. Named Data Networking (NDN) is one of the few initiatives/projects addressing the shortcomings of the current Internet architecture and intends to move the Internet toward a content distribution architecture. In this paper, we conduct a brief survey of security topics/problems inherent to the NDN architecture. Specifically, we describe current known problems and propose solutions to major security problems. 
+\end{abstract}
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+\label{introduction}
+According to a most recent forecast by Cisco \cite{index2015forecast}, the content delivery network (e.g. Netflix, Akamai and etc.) has carried about 39\% of the global Internet traffic by 2014. By 2019, this number is projected to grow up to 62\%. Such growth rate leads to one major observation apropos the current usage of the Internet: while originally designed for end-to-end communication, today's Internet is mainly used as a content distribution network. As the capacity and type of applications of the Internet keeps growing, this disparity could put more pressure on the existing architecture, which it was not designed to handle. Adapting the Internet Architecture to its current usage would require complicated fixes and, in some cases, re-engineering key components.
+
+Information-Centric Networking (ICN) \cite{jacobson2006new} is an emerging movement in the Internet architecture revolution proposed to address the mismatch of the current architecture and its usage. ICN proposes new designs aimed at reshaping the Internet into a content distribution architecture. One of those design is Named Data Networking (NDN) \cite{jacobson2009networking,zhang2014named}. NDN is one of the five research projects funded by NSF under its Future Internet Architecture Program, which embodies the concepts in ICN. The basic idea behind NDN is simple: instead of using packets that name the end hosts, name the datagrams themselves. In such a manner, the communication-centric network is turned into an information-centric network, which naturally addresses the content delivery and mobility support challenges.
+
+ While the Internet was originally designed as a communication network, the emergence of large content providers such as Google, NetFlix, Amazon, etc. has lead to several changes to the Internet Architecture. Among others, Content Delivery Networks (CDN) service providers use parallel TCP connections \cite{akiyama2015saps} and WAN acceleration \cite{zhang2015using} to disseminate the content closer to consumers. In NDN architecture, the content is virtually cached in every router, thus eliminating the need for CDN services while providing same benefits with in-network memory. Such simple and straight forward solution demonstrates how an architectural change in the Internet design can intrinsically solve problems that would take complicated undertaking otherwise. 
+
+Though there are many interesting topics in NDN, we limit this survey within the scope of security. This paper is organized as follows: Section \ref{background} talks about the basic concepts of NDN, current development and its security solution. Section \ref{Advantages and Disadvantages of NDN} describes the difference between IP and NDN with a focus on security, their pros and cons, and open questions in NDN. In section \ref{Possible Solutions}, we propose some possible solutions for the questions. Section \ref{Conclusion} concludes this paper.
+
+
+
+\section{Background}
+\label{background}
+\subsection{Overview}
+NDN defines two types of packets: Interest and Data. Interest packets contain the name of a data chunk that the user is looking for. Data packets contain the actual content associated with the specified name. The data retrieval in NDN can be considered as a pull model. A data chunk is fetched when requested by an interest. And the interest should be sent out by a user who needs the data. One major difference in NDN is that network now is treated as an entity that has the information we need. While in IP world, the network is more of a transparent infrastructure that passes information along.
+
+NDN runs the forwarding functionality based on named data chunks. Routers use the Pending Interest Table (PIT) and the Forwarding Information Base (FIB) to decide where packets should be sent. The Content Store (CS) acts as a cache to speed up some of the requests. If an Interest hits in a router's CS, the corresponding data packet will be returned from the local CS. Otherwise, the router forwards the Interest to its next hop based on some pre-computed strategy.
+
+The namespace in NDN is almost unbounded because it assumes the name of a packet can be any string, any length. A current implementation of the namespace is the URL-like semantic hierarchical labels delineated by '/'. Such nomenclature clearly defines the relationship among multiple data chunks, which is the fundamental of the trust model to be described. In addition to the name field and content field, every NDN packet has a signature signed by the data producer that assures the integrity of a packet. While validating a data packet with a given key is trivial, the main challenge lies in determining if a key is authenticate for a packet. To address this problem, a hierarchical key space structures the authentication chain.
+
+\subsection{Security and Privacy in NDN}
+Smetters and Jacobson first proposed three properties for a receiver to verify when receiving a data packet: validity, provenance, and relevance \cite{smetters2009securing}. They also gave the idea of self-certifying names such that validity can be verified by running SHA-1 against the content and comparing with its name.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/blog-trust-model.png}
+    \caption{Blog Trust Model \cite{yuschematizing}}
+    \label{fig:blog-trust-model}
+\end{figure}
+The authentication chain in NDN is described in \cite{yuschematizing}. A blog website framework depicts the trust model where the root key signs the administrator key, the administrator key signs the other administrator keys, any of the administrator key signs the author key, and the author key signs corresponding articles. Figure \ref{fig:blog-trust-model} illustrates the visual relationship in this blog website example. The authentication across different namespaces could be very complicated. Thus, it is necessary to automate the authentication process. A Trust schema is designed to allow such automation. By using a semantic rule pattern in names, a consumer can analyze the names and parse them like regular expressions to figure out the relationship. 
+
+To minimize the threat by a compromised consumer or producer, the keys \cite{yuconfidentiality} have a lifetime property. Each key is created based on the minimum privilege principle. The less privilege a key has, the shorter its lifetime. In such a way, even if a user is compromised, he/she can only use the key for a limited amount of time, which limits the potential damage.
+
+Figure \ref{fig:access-control} illustrates how access control is designed in name-based key distribution system. A group contains some producers and some consumers, producing or consuming data of particular interests. The Namespace manager acts as the Certificate Authority (CA) to give out root certificates. In a typical scenario, the namespace manager holds private keys from consumers in the group. Then it creates a public/private key pair for the group. Since the public key can be transferred in plain text, it is directly given to the producer without encryption. The private key is encrypted by each consumer's public key respectively and sent to each consumer. A consumer can later decrypt using its local private key to get the group private key. Once the producer has the group public key and the consumer has the group private key, the user access control is done. Next, the producer needs to set up the content access control. The producer uses the group public key to encrypt a symmetric content key and sends it to its consumers. The consumer can decrypt it using its group private key. Now, both ends have the symmetric key. In this way, the producer can encrypt the content using the content key. And consumer can decrypt content using the same key.
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/key-distribution.png}
+    \caption{Named-based Access Control \cite{yuconfidentiality}}
+    \label{fig:access-control}
+\end{figure}
+
+Another topic in security is the Denial-of-Serive (DoS) attack. In IP architecture, despite several research works, no efficient, and accurate solution has been found so far. Most DoS require monitoring traffic using NetFlow and conducting offline analsysis of traffic flows. Such methods are slow relatively to the speeds of sophisticated attacks, such as Distributed DoS (DDoS). Unlike the current Internet architecture, NDN has natural advantages in preventing DoS attacks. Since NDN addressing is based on content names rather than destination (end hosts) addresses, it is almost impossible to  direct all requests to a designated spot as is required in a typical DoS attack. The CS in NDN routers plays a major role in mitigating DoS attacks by reducing the load on data/content producers. However, researchers soon realized there are similar attacks in NDN. Despite NDN's ability to effortlessly combat DoS attacks, researchers have found its vulnerabilities in other type of attacks such as Interest flooding attack, as explained in \cite{afanasyev2013interest}. Basically, by excessively requesting data within a certain namespace, a router could soon use up its memory and PIT entries, thus leading to denial of service for other users served by the same router \cite{compagno2013poseidon}.
+
+Cache pollution is also a potential category of attack in NDN \cite{conti2013lightweight}. An adversary could leverage a Bot-net to fill up a router's local CS with rarely requested content in order to downgrade the service quality for other users.
+
+Cache privacy problem proposed in \cite{acs2013cache} is a more targeted threat on user. An adversary can decide whether a user has requested some particular data in a following way. The adversary first requests for the content $C$ that a user could have requested and logs the delay $d$. Then it requests another data chunk $C'$ twice that user must have not requested. Thus, for the first time, delay will be $d_1$ and the second time delay will be $d_2$, where $d_1$ \textgreater $d_2$, since the second request hits the cache. The adversary can therefore know whether $C$ is cached by comparing $d$ and $d_2$.
+
+
+\section{Advantages and Disadvantages of NDN}
+\label{Advantages and Disadvantages of NDN}
+
+\subsection{Comparison between IP and NDN}
+From a high level perspective, NDN architecture has a similar structure as IP architecture. Both share the structure of hourglass with narrow waist. In IP architecture, the narrow waist is IP packets serving as a common layer across all types of underlying networks and upper applications. In NDN, the narrow waist is NDN packets serving as the common layer. Both IP and NDN follow Clark's end-to-end principle \cite{saltzer1984end}. The routers do not care what kind of applications is utilizing the packets, routers only take care of the packets forwarding. And both architectures appear as layered structures. Either IP or NDN stands as an outstanding abstract layer that provides service for all the upper layer applications.
+
+The most significant difference between IP and NDN is the change of service type. The traditional scheme of delivering data to a destination now becomes a new scheme of fetching data associated with a particular name. IP routers are stateless, they do not store any information about the packets they have processed. While NDN routers are stateful, requested packets are cached in CS not only for acceleration but also affect the forwarding strategy a router makes. In terms of the architectural design, there are several pros and cons existing between IP and NDN. We only discuss from a security perspective.
+
+Network layer security is a significant improvement in NDN that IP does not originally support. Through the use of certificates, every data packet in NDN is signed at the producer and can be verified at the consumer via keys as explained earlier. Per-packet encryption add a security guarantee in network layer. In IP architecture, security is implemented through end-to-end channel by upper layer protocols like (Secure Socket Layers) SSL. These protocols only provides limited security support for applications as they establish a secure communication channel rather than securing the contents. However, several major protocols in IP such as BGP, OSPF, ICMP and etc. are not encrypted. These unsecured protocols could be utilized to launch attacks. By requiring a signature on every packet, NDN  effectively addresses the integrity and provenance of a packet.
+
+An advantage of IP over NDN is its many years of engineering evaluation (over 30 years) by billions of users, which has ultimately proved its effectiveness and usability. In contrast, NDN is a relatively new concepts in its experimental phase. As of the time of this writing, for practical purposes, NDN is implemented on top of IP on its major cross-continent testbed. Without the actual development of router hardware (ASICs) to handle the many components of NDN and further public testing, it is unfair to compare IP and NDN despite many foreseen theoretical advantages the latter guarantees.  As with many protocols, only extensive public use can reveal major shortcomings. In the case of TCP, congestion problems were found after DARPAnet was put into use. In addition, the more time a protocol spends in non-experimental use, the more sophisticated cyber attacks become. NDN must also pass this test of time.
+
+\subsection{Open Questions}
+As mentioned previously, there are several key concerns in NDN security. In this section, we discuss them in the following order: (i) key distribution; (ii) key revocation; (iii) Interest flood; and (iv) cache pollution.
+
+NDN key distribution scheme follows the trust model discussed in the previous section. However, a few problems are also exposed in such a trust model. First, since the actual content is encrypted by symmetric key, an attacker can use brute force to crack the encrypted content. Current computational power can easily crack a 56-bit DES encryption system in minutes.  Increasing the length of the keys can prevent such possibility. However, a long keys  would lead to overhead at the router, which could cause low throughput and/or unexpectedly high delays. Moreover, the major problem lies in the namespace manager. 
+The namespace manager needs to store every single public key of a consumer. Considering a large group of consumers, the space to store these keys could be very large and the key management could also be of low efficiency. Such a centralized manager is similar to the certificate authority (CA) in IP world, which is prone to leaking all the keys when compromised. Besides, the trust schema as interpreted as a chain of security rules is dependent on the namespace design. Since NDN leaves the choice of data names to the application, there needs to be some forcible rules to prevent attacks by maliciously constructing the name. In a simple trust schema, the risk of failing an authentication is high when rules are too simple. A robust way is to apply multi-level chained authentication. However, this inevitably lowers the efficiency because the chain needs to be walked through every time.
+
+One possible way of key revocation is by negative statements. A user can explicitly announce the revocation of his key to the public. Thereafter, other users in the network can thus react by updating their local configuration respectively \cite{yupublic}. However, this negative statement is not guaranteed to be received by everyone. A malicious attacker could: fill a packet with harmful content, respond to Interests and sign the packet with revoked key. If the attacker manages to prevent a target user from receiving the revocation statement, this attack could work. On the other hand, if a key is compromised, all the keys generated by this compromised key need to be revoked correspondingly. Due to the multi-layered hierarchy in key privileges, there is no guarantee that no missed key can still exist and be used. 
+
+A relatively effective way is to make the origin owner of the key to revoke it. But sometimes it is impossible because the user might still need the key. Even it is possible, the problem of reachability still exists. And the ultimate problem is how to limit the number of affected users if the key is compromised.
+
+Though NDN can prevent the regular type of DoS attack pretty well, there is an equivalent type of attack in NDN realm, Interest flood \cite{gasti2013and}. An adversary cannot target a specific host or router but it can target a namespace. If the name he requests is (i) unique and a particular host is the lone producer for its corresponding namespace, (ii) can respond to the request, (iii) and provides the corresponding data exclusively, the adversary can make use of this name to plan an attack. All the interests passing through the intermediate routers will be forwarded towards that host. In such a way, the adversary needs to make sure that the interests are passed along by the routers and every packet he requests has a unique name that only resides in that host. Then he needs to keep sending out interests towards the target. As a consequence, the PIT could effectively be depleted by such an excessive amount of interests, which eventually leads to disruption of service.
+
+As for cache pollution, the ultimate goal is to destroy cache localization and deteriorate the link utilization. An adversary can compromise a small set of consumers and use them to issue interests. By carefully requesting for unpopular content, the adversary could force the router to cache those unpopular content in order to deplete its available local CS space. Once the CS is filled with unpopular content from an attacker, other consumers would need to fetch data from further places. This essentially exacerbates link utilization and throughput and affects all the connected users.
+
+
+
+\section{Possible Solutions}
+\label{Possible Solutions}
+\textbf{Centralized namespace management} A centralized namespace manager may lead to several security threats that endanger a wide range of users. As a single point of failure, it also inherits the shortcomings any centralized system. We propose a distributed namespace controller for several reasons, namely, risk containment, and efficiency. For reliability purposes, it is crucial to have some sort of redundancy in any critical part of a big system such as a big network. Such redundancy prevents the system from completely shutting off in case of a failure. For risk containment purposes, potential threats (such as in cases where a key is compromised) can be discovered and contained at the domain level. A distributed namespace manager is also more efficient. Syncing across few managers is more efficient and effective compared to synching across all routers.
+
+\textbf{Interest flood} Two possible solutions can help mitigate the negative effects of Interest flood: interest load monitoring and policing. On a router level, interest traffic can be monitored in time and analyzed on the fly. To reach near real-time performance, sampling techniques, such as those featured in NetFlow, can be used. In the event where the interest load for a particular namespace reaches a threshold, interests may be dropped selectively. Such policing techniques increases the probability that some portion of the bandwith is always left for non-malicious interest in the same namespace.
+
+\textbf{Cache pollution}
+To prevent the problem of cache pollution, we propose using a split content store at the router level. A single CS can be implemented as 2 separate memory slots. By monitoring cache occupancy in time, unpopular cache occupants can be migrated to the smaller slot of the CS. For effectiveness reasons, such migrations can only be performed at regular intervals, $\tau$. After every $\tau$ units of time, a ranking/sorting of cache occupants by the number of hits/access determines the least recently accessed, which are then migrated to the smaller CS slot. Entries in the CS can also be timed to allow eviction of stale content and free the space. Such popularity-based allocations would ensure that popular content is available and close to consumers, thus allowing for a high performance network.
+\section{Conclusion}
+\label{Conclusion}
+Ever since Van Jacobson's seminal talk in 2006, ICN community has made significant strides to making ICN designs a reality. The NDN architecture, in particular, has attracted a lot of researchers and computer scientists. As a result working prototypes of NDN architecture and a cross-continent testbed have made significant expansion possible through research. Theoretically, NDN will solve several problems that IP has been unable to address efficiently over its several decades of existence. In security, NDN addresses security challenges such as DoS attacks naturally and in-router data caching provides more efficient CDN service. However, NDN brings its new security challenges/concerns inherent to its architecture such as interest flooding, cache poisoning, key management problems, that are more or less significant depending on the nature or sensitivity of data. In this paper, we proposed potential solutions to 3 major NDN security problems. We propose three solutions, namely, distributed namespace management, interest load monitoring and policing, and a two-way split Content Store, to alleviate and in same cases, eliminate security threats posed by centralized namespace management, interest flood, and cache pollution, respectively. 
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+
+\bibliographystyle{IEEEtran}
+%\bibliography{IEEEabrv,References,base-refs,rfc,VCMTP-References}
+\bibliography{ref}
+
+
+% that's all folks
+\end{document}
+
+
